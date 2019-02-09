@@ -176,6 +176,973 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-node与session" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/08/node与session/">node与session</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/08/node与session/" class="archive-article-date">
+  	<time datetime="2018-06-08T03:58:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>趁热打铁，这节就是解决上节未安装seesion问题的。</p>
+<p>我这里就不对session做详细的解释了，你如果要用它，想必也是知道它的用处的。</p>
+<p>首先是安装：<code>express-session</code></p>
+<p><code>npm install express-session</code></p>
+<p>可能npm提示安装成功了，保险点还是去<code>package.json</code>文件去看看，如：<br><img src="/2018/06/08/node与session/depend.png" width="40%"></p>
+<p>然后在<code>app.js</code>中引入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var session = require(&quot;express-session&quot;);  </span><br><span class="line">var NedbStore = require(&apos;nedb-session-store&apos;)( session );</span><br><span class="line">const sessionMiddleware = session(&#123;</span><br><span class="line">    secret: &quot;fas fas&quot;,</span><br><span class="line">    resave: false,</span><br><span class="line">    saveUninitialized: false,</span><br><span class="line">    cookie: &#123;</span><br><span class="line">      path: &apos;/&apos;,</span><br><span class="line">      httpOnly: true,</span><br><span class="line">      maxAge: 365 * 24 * 60 * 60 * 1000   // e.g. 1 year</span><br><span class="line">    &#125;,</span><br><span class="line">    store: new NedbStore(&#123;</span><br><span class="line">      filename: &apos;path_to_nedb_persistence_file.db&apos;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">app.use(sessionMiddleware);</span><br></pre></td></tr></table></figure></p>
+<p>这下就可以燥起来了。</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>趁热打铁，这节就是解决上节未安装seesion问题的。</p>
+<p>我这里就不对session做详细的解释了，你如果要用它，想必也是知道它的用处的。</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/06/08/node与session/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/后端//" class="article-tag-list-link color3">后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/08/node与session/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-node与验证码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/08/node与验证码/">node与验证码</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/08/node与验证码/" class="archive-article-date">
+  	<time datetime="2018-06-08T03:04:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>最近用node做了一个简易后台系统，遇到了很多坑，拿出来分享分享。</em></p>
+<p>先上图，我们还是按套路出牌。<br><img src="/2018/06/08/node与验证码/yzm.gif" width="40%"></p>
+<blockquote>
+<p>因为long long ago也用php写过后台，php可以自己绘制验证码。所以马上百度一波。<br>然而发现node貌似没有类似的骚操作。</p>
+</blockquote>
+<p>所以选择了网上大多数人用的插件<code>svg-captcha</code></p>
+<p>来来来，上代码：<br><code>api.js:</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var svgCaptcha = require(&apos;svg-captcha&apos;);//引入插件（验证码） ps:可以放在公用的app.js中，我是单独放在api.js中</span><br><span class="line"></span><br><span class="line">router.post(&apos;/captcha&apos;,function(req,res,next)&#123;</span><br><span class="line">    var code = svgCaptcha.create(&#123;  </span><br><span class="line">        // 翻转颜色  </span><br><span class="line">        inverse: false,  </span><br><span class="line">        ignoreChars: &apos;0o1i&apos;,</span><br><span class="line">         // 验证码字符中排除 0o1i</span><br><span class="line">        // 字体大小  </span><br><span class="line">        fontSize: 36,  </span><br><span class="line">        // 噪声线条数  </span><br><span class="line">        noise: 2,  </span><br><span class="line">        // 宽度 </span><br><span class="line">        width: 120,  </span><br><span class="line">        // 高度  </span><br><span class="line">        height: 29,  </span><br><span class="line">        color: &apos;red&apos;,</span><br><span class="line">    &#125;); </span><br><span class="line">    req.session.captcha = code.text.toLowerCase();  // 特别注意：这里需要你先自己定义session，否则会报错</span><br><span class="line">    res.send(code.data);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>下面代码是前端实现渲染：<br><code>login.ejs:</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123; </span><br><span class="line">	url: &quot;/api/captcha&quot;,</span><br><span class="line">	type: &apos;post&apos;,</span><br><span class="line">	success: function(data) &#123; </span><br><span class="line">		$(&quot;.yzm_pic&quot;).html(data); //关键代码</span><br><span class="line">	&#125;,</span><br><span class="line">	error: function(err) &#123;</span><br><span class="line">		console.log(err);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>到这里，恭喜！你就大功告成。</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p><em>最近用node做了一个简易后台系统，遇到了很多坑，拿出来分享分享。</em></p>
+<p>先上图，我们还是按套路出牌。<br><img src="/2018/06/08/node与验证码/yzm.gif" width="40%"></p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/06/08/node与验证码/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/后端//" class="article-tag-list-link color3">后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/08/node与验证码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-nodejs-引入mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/31/nodejs-引入mysql/">nodejs - 引入mysql</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/31/nodejs-引入mysql/" class="archive-article-date">
+  	<time datetime="2018-05-31T10:05:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="node中mysql的应用"><a href="#node中mysql的应用" class="headerlink" title="node中mysql的应用"></a>node中mysql的应用</h2><p>首先我们需要先在<code>pagejson.js</code>的依赖中加入<code>&quot;mysql&quot;: &quot;latest&quot;</code>,如图：<br><img src="/2018/05/31/nodejs-引入mysql/node_pic2.png" width="40%"><br>然后npm install ，这样mysql就安装好了。</p>
+<p>这里为了后续项目操作数据库方便，就建立了一个连接数据库的公用模板。我们可以新建一个文件夹，我这里是db文件夹，<br>如下：<br><img src="/2018/05/31/nodejs-引入mysql/node_index.png" width="40%"><br>db文件夹下有两个js,具体代码如下：</p>
+<p><code>congfig.js:</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;  </span><br><span class="line">	mysql: &#123;   </span><br><span class="line">		host: &apos;127.0.0.1&apos;,     </span><br><span class="line">		user: &apos;root&apos;,   </span><br><span class="line">		password: &apos;123456&apos;,  </span><br><span class="line">		database:&apos;lafiteXXX&apos;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p><code>usersql.js:</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var UserSQL = &#123;  </span><br><span class="line">	insert:&apos;INSERT INTO user(id,name) VALUES(?,?)&apos;, </span><br><span class="line">	queryAll:&apos;SELECT * FROM user&apos;,  </span><br><span class="line">	getUserById:&apos;SELECT * FROM user WHERE id = ? &apos;,</span><br><span class="line">	getUserByName:&apos;SELECT * FROM user WHERE name = ? &apos;,</span><br><span class="line">&#125;;</span><br><span class="line">module.exports = UserSQL;</span><br></pre></td></tr></table></figure></p>
+<p>最后在routes文件夹中新建一个js或者直接在<code>users.js</code>中引入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">// 导入MySQL模块</span><br><span class="line">var mysql = require(&apos;mysql&apos;);</span><br><span class="line">var dbConfig = require(&apos;../db/config&apos;);</span><br><span class="line">var userSQL = require(&apos;../db/usersql&apos;);</span><br><span class="line"></span><br><span class="line">/* GET users listing. */</span><br><span class="line">router.get(&apos;/add&apos;, function(req, res, next) &#123;</span><br><span class="line">  res.send(&apos;respond with a resource&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 使用DBConfig.js的配置信息创建一个MySQL连接池</span><br><span class="line">var pool = mysql.createPool( dbConfig.mysql );</span><br><span class="line"></span><br><span class="line">// 响应一个JSON数据</span><br><span class="line">var responseJSON = function (res, ret) &#123;</span><br><span class="line">     if(typeof ret === &apos;undefined&apos;) &#123; </span><br><span class="line">          res.json(&#123;</span><br><span class="line">          	code:&apos;-200&apos;,</span><br><span class="line">          	msg: &apos;操作失败&apos;   </span><br><span class="line">        &#125;); </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">      res.json(ret); </span><br><span class="line">  	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">// 添加用户</span><br><span class="line">router.get(&apos;/addUser&apos;, function(req, res, next)&#123;</span><br><span class="line">	// 从连接池获取连接 </span><br><span class="line">	pool.getConnection(function(err, connection) &#123; </span><br><span class="line">		// 获取前台页面传过来的参数  </span><br><span class="line"> 		var param = req.query || req.params;   </span><br><span class="line">		// 建立连接 增加一个用户信息 </span><br><span class="line">		connection.query(userSQL.insert, [param.id,param.name], function(err, result) &#123;</span><br><span class="line">	        if(result) &#123;      </span><br><span class="line">	             result = &#123;   </span><br><span class="line">	                code: 200,   </span><br><span class="line">	                msg:&apos;增加成功&apos;</span><br><span class="line">	             &#125;;  </span><br><span class="line">	        &#125;      </span><br><span class="line">     		// 以json形式，把操作结果返回给前台页面     </span><br><span class="line">       		responseJSON(res, result);   </span><br><span class="line"></span><br><span class="line">     		// 释放连接  </span><br><span class="line">      		connection.release(); </span><br><span class="line">       &#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 添加用户</span><br><span class="line">router.get(&apos;/query&apos;, function(req, res, next)&#123;</span><br><span class="line">	// 从连接池获取连接 </span><br><span class="line">	pool.getConnection(function(err, connection) &#123; </span><br><span class="line">		// 获取前台页面传过来的参数  </span><br><span class="line"> 		var param = req.query || req.params;   </span><br><span class="line">		// 建立连接 增加一个用户信息 </span><br><span class="line">		connection.query(userSQL.getUserById, param.id, function(err, result) &#123;</span><br><span class="line">	        if(result) &#123;  </span><br><span class="line">	            result = &#123;   </span><br><span class="line">	                code: 200,   </span><br><span class="line">	                msg:&apos;请求成功&apos;,</span><br><span class="line">	                data: result</span><br><span class="line">	             &#125;;</span><br><span class="line">	        &#125;      </span><br><span class="line">     		// 以json形式，把操作结果返回给前台页面     </span><br><span class="line">       		responseJSON(res, result);   </span><br><span class="line"></span><br><span class="line">     		// 释放连接  </span><br><span class="line">      		connection.release(); </span><br><span class="line">       &#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>可以在本地index.ejs模板中用ajax请求<a href="http://localhost:3300/users/query？id=1" target="_blank" rel="noopener">http://localhost:3300/users/query？id=1</a><br>就可以得到接口数据了。</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><h2 id="node中mysql的应用"><a href="#node中mysql的应用" class="headerlink" title="node中mysql的应用"></a>node中mysql的应用</h2><p>首先我们需要先在<code>pagejson.js</code>的依赖中加入<code>&quot;mysql&quot;: &quot;latest&quot;</code>,如图：<br><img src="/2018/05/31/nodejs-引入mysql/node_pic2.png" width="40%"><br>然后npm install ，这样mysql就安装好了。</p>
+<p>这里为了后续项目操作数据库方便，就建立了一个连接数据库的公用模板。我们可以新建一个文件夹，我这里是db文件夹，<br>如下：<br><img src="/2018/05/31/nodejs-引入mysql/node_index.png" width="40%"><br>db文件夹下有两个js,具体代码如下：</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/05/31/nodejs-引入mysql/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/后端//" class="article-tag-list-link color3">后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/31/nodejs-引入mysql/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-nodejs-准备工作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/31/nodejs-准备工作/">nodejs - 准备工作</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/31/nodejs-准备工作/" class="archive-article-date">
+  	<time datetime="2018-05-31T09:51:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="express-安装"><a href="#express-安装" class="headerlink" title="express 安装"></a>express 安装</h2><p>在安装使用express插件之前，个人建议先看看nodejs原生的一些操作及用法。</p>
+<p><code>express</code>安装步骤如下：</p>
+<ol>
+<li><code>npm install -g express</code>  全局安装</li>
+<li><code>npm install -g express-generator</code> 很重要，不然会提示“express命令找不到的”</li>
+<li><code>express -e microblog</code> 建立网站项目模板</li>
+<li><code>npm install -g  node-dev</code> 安装热加载node-dev,ps:可以在pagejson下修改node,为node-dev如下图：<br><img src="/2018/05/31/nodejs-准备工作/node_pic1.png" width="40%"><br>这样npm start 就可以实现热加载了。</li>
+</ol>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><h2 id="express-安装"><a href="#express-安装" class="headerlink" title="express 安装"></a>express 安装</h2><p>在安装使用express插件之前，个人建议先看看nodejs原生的一些操作及用法。</p>
+<p><code>express</code>安装步骤如下：</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/05/31/nodejs-准备工作/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">node</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/后端//" class="article-tag-list-link color3">后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/31/nodejs-准备工作/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-《小别离》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/24/《小别离》/">《小别离》</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/24/《小别离》/" class="archive-article-date">
+  	<time datetime="2018-05-24T01:59:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-24</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="小别离-—lafitewu"><a href="#小别离-—lafitewu" class="headerlink" title="小别离 —lafitewu"></a>小别离 —lafitewu</h2><p>曾几何时，已不在少年</p>
+<p>远离了安逸，寻一场梦。</p>
+<p>兜转间，又是初夏。</p>
+<p>却不见三两好友，举杯，放肆。</p>
+<p><img src="/2018/05/24/《小别离》/xiaobieli.jpg" width="30%"></p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><h2 id="小别离-—lafitewu"><a href="#小别离-—lafitewu" class="headerlink" title="小别离 —lafitewu"></a>小别离 —lafitewu</h2><p>曾几何时，已不在少年</p>
+<p>远离了安逸，寻一场梦。</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/05/24/《小别离》/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">诗</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/24/《小别离》/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hexo-初体验" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/22/hexo-初体验/">hexo-初体验</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/22/hexo-初体验/" class="archive-article-date">
+  	<time datetime="2018-05-22T08:30:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-22</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>hexo: 主要是联合github来搭建属于自己的博客。<br>具体实现方法我就不一步一步演示了。毕竟网上有大把的教程。<br>这里主要想介绍一些hexo插件及语法。</p>
+</blockquote>
+<h2 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h2><ol>
+<li>新建blog文章：<code>hexo new &quot;title&quot;</code> 也可以缩写为:<code>hexo n &quot;title&quot;</code></li>
+<li>生成静态文件：<code>hexo generate</code> 可缩写为：<code>hexo g</code></li>
+<li>文件发布到仓库: <code>hexo deploy</code> 可缩写为：<code>hexo d</code></li>
+<li>启动本地服务：<code>hexo sever</code> 可缩写为：<code>hexo s</code></li>
+</ol>
+<h2 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h2><ol>
+<li>在md中插入图片<code>npm install hexo-asset-image --save</code>  ps:后续在生成的文件夹中放入本地图片即可。</li>
+<li>未完待续…</li>
+</ol>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p><a href="http://www.lafitewu.xyz" target="_blank" rel="noopener">去lafitewu博客转转</a></p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><blockquote>
+<p>hexo: 主要是联合github来搭建属于自己的博客。<br>具体实现方法我就不一步一步演示了。毕竟网上有大把的教程。<br>这里主要想介绍一些hexo插件及语法。</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/05/22/hexo-初体验/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">www</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/后端//" class="article-tag-list-link color3">后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/22/hexo-初体验/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-《shoe-dog》-初读鞋狗" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/19/《shoe-dog》-初读鞋狗/">《shoe dog》 - 初读鞋狗</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/19/《shoe-dog》-初读鞋狗/" class="archive-article-date">
+  	<time datetime="2018-04-19T01:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-19</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="/2018/04/19/《shoe-dog》-初读鞋狗/page1.jpg" width="30%"></p>
+<h2 id="原文经典语录"><a href="#原文经典语录" class="headerlink" title="原文经典语录"></a>原文经典语录</h2><p>1.”敢于冒险，别让你的才能掩埋在这片平庸的土地上。” &nbsp; &nbsp; &nbsp;–2014年6月 斯坦福大学 &nbsp;-菲尔.奈特。</p>
+<p>2.雅典娜胜利神庙（Temple of Athena Nike） &nbsp; –这也就是Nike名字的由来，象征着胜利。</p>
+<p>3.”在驱车返回的路上，我都在思考自己的销售大获成功的原因。我认为我之所以没法销售百科全书，是因为自己打心底里瞧不起它。销售共同基金时表现也只是稍有改进，因为我没有投入热情。那为什么卖鞋会如此不同呢？那是因为我发现这不是在销售，而是我对跑步的信赖。” &nbsp; - p60</p>
+<p>4.”作为会计师的我依旧能看出风险的存在，而作为创业者的我却也见到了可能性。所以我折中了一下，继续前行。” &nbsp;- p82</p>
+<p>5.”我走的路正是我觉得像是我的路，我不确定这条路会通往何方，但是我已经准备好找出属于我的终点。” - p130</p>
+<p>6.”生活就是成长，不成长就是死亡。”</p>
+<p>7.” ‘这个似乎是翅膀。’一个人说。&lsquo;像是 嗖的一声在空中留下的痕迹。&rsquo;另一个人说。也像某个跑者飞速留下的踪影。我们都觉得这个标志新颖、创意十足，多少又透露出一股子古老的气息。它具有永不过时的气质。”</p>
+<h2 id="思考-amp-amp-总结"><a href="#思考-amp-amp-总结" class="headerlink" title="思考&amp;&amp;总结"></a>思考&amp;&amp;总结</h2><p>未完待续…</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p><img src="/2018/04/19/《shoe-dog》-初读鞋狗/page1.jpg" width="30%"></p>
+<h2 id="原文经典语录"><a href="#原文经典语录" class="headerlink" title="原文经典语录"></a>原文经典语录</h2><p>1.”敢于冒险，别让你的才能掩埋在这片平庸的土地上。” &nbsp; &nbsp; &nbsp;–2014年6月 斯坦福大学 &nbsp;-菲尔.奈特。</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/04/19/《shoe-dog》-初读鞋狗/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">阅读</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/19/《shoe-dog》-初读鞋狗/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-jquery-delegate的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/13/jquery-delegate的使用/">jquery - (delegate的使用)</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/13/jquery-delegate的使用/" class="archive-article-date">
+  	<time datetime="2018-04-13T08:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-13</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>起因：</strong>以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。<br><img src="/2018/04/13/jquery-delegate的使用/page2.jpg" width="30%"></p>
+<p><strong>所以：</strong>这就是为什么要用delegate绑定事件。</p>
+<p>举个例子：我在class为demo的标签内的a 标签加了个点击事件，而点击事件里面执行的是把demo标签内，所有内容替换，同时也会重新插入a标签。</p>
+<p><strong>example：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.app_infro_con&quot;).delegate(&quot;a&quot;,&quot;click&quot;,function() &#123;</span><br><span class="line">	//给class名为app_infro_con内的a 标签一个点击事件</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type:&quot;get&quot;,</span><br><span class="line">        url: Url,</span><br><span class="line">        dataType:&quot;jsonp&quot;,</span><br><span class="line">        async: true,</span><br><span class="line">        beforeSend:function(XMLHttpRequest)&#123; </span><br><span class="line">            $(&quot;.app_infro_con&quot;).html(&quot;img style=&apos;width: 100%;&apos; src=&apos;./images/loading.gif&apos;&quot;/);// app_infro_con内的内容，这时app_infro_con里面已经没有a标签了</span><br><span class="line">        &#125;, </span><br><span class="line">        success:function(res)&#123;</span><br><span class="line">            var infro = res.data.notice</span><br><span class="line">            $(&quot;.app_infro_con&quot;).html(infro);  // 这里的infro 是我外部定义的一个内容，里面是有a标签的，但是 如果用直接click去绑定，你会发现click只会触发一次,这是因为这里的a标签是新插入进来的。</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>嗯，终于从坑里出来了。可怕~</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p><strong>起因：</strong>以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。<br><img src="/2018/04/13/jquery-delegate的使用/page2.jpg" width="30%"></p>
+<p><strong>所以：</strong>这就是为什么要用delegate绑定事件。</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/04/13/jquery-delegate的使用/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/13/jquery-delegate的使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js-ajax-loading加载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -412,1058 +1379,6 @@
 
 
   
-    <article id="post-vue-axios与vue-resource" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/10/vue-axios与vue-resource/">vue - (axios与vue-resource)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/10/vue-axios与vue-resource/" class="archive-article-date">
-  	<time datetime="2018-04-10T08:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-10</time>
-</a>
-        
-      </header>
-    
-    <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>今天我们来讲讲vue中调api的两种常见方法。</strong><br><img src="/2018/04/10/vue-axios与vue-resource/page5.jpg" width="30%"></p>
-<p>由于vue2.0开始，对vue-resource不在维护更新。所以导致很多人开始入坑axios。</p>
-<p>当我用起了axios，嗯，它是真的坑。最坑的是它<strong>不支持跨域</strong>。</p>
-<p><img src="/2018/04/10/vue-axios与vue-resource/page5_2.jpg" width="30%"></p>
-<p><strong>如果你项目打包上线依旧需要跨域，我劝你就不要用axios了，会把自己坑死的。（这时候就可以用vue-resource）</strong></p>
-<p>但是如果只是在环境上测试，你可以使用<code>proxyTable</code>代理。</p>
-<p>具体使用如下，<code>找到config文件夹中的index.js文件：</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">           &apos;/api&apos;:&#123;</span><br><span class="line">                target:&apos;https://api.douban.com&apos;,</span><br><span class="line">                changeOrigin:true,</span><br><span class="line">                pathRewrite:&#123;</span><br><span class="line">                    &apos;/api&apos;:&apos;&apos;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
-<p>怎么调用？<br>如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">that.$axios.post(&apos;/api/v2/movie/top250&apos;).then(function(response)&#123;console.log(response.data);</span><br><span class="line">  &#125;).catch(function(error)&#123;</span><br><span class="line">   console.log(error);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>这里就相当于用<code>/api==https://api.douban.com</code></p>
-<p>但是如果打包后还是要实现跨域，那么用<code>vue-resource</code>吧，小伙子别执着了。</p>
-<p>vue - reource 安装步骤</p>
-<p>1.<code>npm install vue-resource --save</code></p>
-<p>2.找到<code>main.js</code>,加入下面代码。</p>
-<blockquote>
-<p>import VueResource from ‘vue-resource’<br>Vue.use(VueResource)</p>
-</blockquote>
-<p>跨域调用：</p>
-<blockquote>
-<p>that.$http.jsonp(“<a href="http://xxxxxxxxxxx&quot;,{params:{&quot;callback&quot;:&quot;jsonPCallback&quot;}}).then(function(response){" target="_blank" rel="noopener">http://xxxxxxxxxxx&quot;,{params:{&quot;callback&quot;:&quot;jsonPCallback&quot;}}).then(function(response){</a><br>   console.log(response.body);<br>});</p>
-</blockquote>
-<p>ok，大功告成。</p>
-
-      
-
-      
-    </div> -->
-    
-    <!-- 自动截取摘要 -->
-    <div class="article-entry" itemprop="articleBody">
-    
-    
-        
-            
-            
-                
-                
-            
-                
-                
-            
-            
-                
-                <p><p><strong>今天我们来讲讲vue中调api的两种常见方法。</strong><br><img src="/2018/04/10/vue-axios与vue-resource/page5.jpg" width="30%"></p>
-<p>由于vue2.0开始，对vue-resource不在维护更新。所以导致很多人开始入坑axios。</p>
-<p>
-            
-        
-    
-    
-        </div>   
-        <!-- <div class="article-more-link">
-            <a href="/2018/04/10/vue-axios与vue-resource/#more">article.more</a>
-        </div> -->
-    
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/10/vue-axios与vue-resource/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vue-切换class" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/09/vue-切换class/">vue - (切换class)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/09/vue-切换class/" class="archive-article-date">
-  	<time datetime="2018-04-09T08:38:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-09</time>
-</a>
-        
-      </header>
-    
-    <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>先上效果图:</strong></p>
-<p><img src="/2018/04/09/vue-切换class/pic1.gif" width="70%"></p>
-<p>用惯了jq的朋友，一眼望过去，这个很简单呀。是的，用jq是很简单。当然用vue其实也很简单。</p>
-<p>很久没用vue，有点生疏了，所以分享出来，也防止下次自己再忘记。嘿嘿~，代码走你~</p>
-<p><code>html</code>部分代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">div class=&quot;chart_btn&quot; @click=&quot;tap(index)&quot; :class=&quot;&#123;echat_active: active ==index&#125;&quot; v-for=&quot;(item,index) in echart_btn&quot; key=&quot;index&quot;&gt;&#123;&#123;item.name&#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p><code>methods:</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">	tap(a) &#123;</span><br><span class="line">		this.active = a</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>当然还要在data中定义active，初始值可根据实际需求来。</p>
-<p>ok,今天的分享就到这里了。</p>
-<p>&nbsp;</p>
-
-      
-
-      
-    </div> -->
-    
-    <!-- 自动截取摘要 -->
-    <div class="article-entry" itemprop="articleBody">
-    
-    
-        
-            
-            
-                
-                
-            
-                
-                
-            
-            
-                
-                <p><p><strong>先上效果图:</strong></p>
-<p><img src="/2018/04/09/vue-切换class/pic1.gif" width="70%"></p>
-<p>
-            
-        
-    
-    
-        </div>   
-        <!-- <div class="article-more-link">
-            <a href="/2018/04/09/vue-切换class/#more">article.more</a>
-        </div> -->
-    
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/09/vue-切换class/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-netlify联合github搭建自己的主页" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/03/netlify联合github搭建自己的主页/">netlify联合github搭建自己的主页</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/03/netlify联合github搭建自己的主页/" class="archive-article-date">
-  	<time datetime="2018-04-03T02:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-03</time>
-</a>
-        
-      </header>
-    
-    <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>首先你得有自己的github,如果没有赶紧先去自己注册一个。ps: <a href="https://github.com/" target="_blank" rel="noopener">github官网</a></p>
-</blockquote>
-<blockquote>
-<p>然后先在github上放上自己的项目。 ps: <a href="https://github.com/lafitewu/desktop" target="_blank" rel="noopener">查看demo</a> （我的github项目目录，仅供参考。）</p>
-</blockquote>
-<p>目录图如下：</p>
-<p><img src="/2018/04/03/netlify联合github搭建自己的主页/e47f594ef26a41a5.png" width="70%"></p>
-<p><code>git地址：</code><a href="https://github.com/lafitewu/desktop.git" target="_blank" rel="noopener">https://github.com/lafitewu/desktop.git</a></p>
-<p>这时，今天的主角就到登场了 -&nbsp;netlify &nbsp; ps: <a href="https://www.netlify.com/" target="_blank" rel="noopener">netlify官网</a></p>
-<p><strong>请自行在官网注册登录。</strong></p>
-<p>登录成功之后， OK，看图</p>
-<p>1.新建一个站点</p>
-<p><img src="/2018/04/03/netlify联合github搭建自己的主页/485d44bf69b3d0dc.png" width="70%"></p>
-<p>2.联合github</p>
-<p><img src="/2018/04/03/netlify联合github搭建自己的主页/884d5f01540dff4d.png" width="70%"></p>
-<p>&nbsp;3.选择自己的github中的项目。 （我这里是用的desktop项目）</p>
-<p><img src="/2018/04/03/netlify联合github搭建自己的主页/d9d649ccb1e89b5e.png" width="70%"></p>
-<p>4.确定连接</p>
-<p><img src="/2018/04/03/netlify联合github搭建自己的主页/21ccf79a182ad205.png" width="70%"></p>
-<p>5.可绑定自己的域名。</p>
-<p><img src="/2018/04/03/netlify联合github搭建自己的主页/ae8003d4ec910f9c.png" width="70%"></p>
-<p>如果不需要绑定自己域名的，OK。那恭喜你，你的葵花宝典已经修炼完成了。</p>
-
-      
-
-      
-    </div> -->
-    
-    <!-- 自动截取摘要 -->
-    <div class="article-entry" itemprop="articleBody">
-    
-    
-        
-            
-            
-                
-                
-            
-                
-                
-            
-            
-                
-                <p><blockquote>
-<p>首先你得有自己的github,如果没有赶紧先去自己注册一个。ps: <a href="https://github.com/" target="_blank" rel="noopener">github官网</a></p>
-<p>
-            
-        
-    
-    
-        </div>   
-        <!-- <div class="article-more-link">
-            <a href="/2018/04/03/netlify联合github搭建自己的主页/#more">article.more</a>
-        </div> -->
-    
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">www</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/后端//" class="article-tag-list-link color3">后端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/03/netlify联合github搭建自己的主页/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js-截取网址参数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/23/js-截取网址参数/">js - (截取网址参数)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/23/js-截取网址参数/" class="archive-article-date">
-  	<time datetime="2018-03-23T01:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-23</time>
-</a>
-        
-      </header>
-    
-    <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="split截取"><a href="#split截取" class="headerlink" title="split截取"></a>split截取</h2><p>首先举个栗子：</p>
-<p><strong>比如：</strong><code>detail.html?url=http://dev.mdap.com/api/ads/cpl?t=1&amp;cid=16&amp;cuid=53&amp;deviceid=xxx&amp;unixt=xxx</code></p>
-<p>这个网址，我想截取<code>http://dev.mdap.com/api/ads/cpl?t=1&amp;amp;cid=16&amp;cuid=53&amp;deviceid=xxx&amp;unixt=xxx</code> 这个，怎么办</p>
-<p>来，走你~;</p>
-<p>var Url = &nbsp;detail.html?url=<a href="http://dev.mdap.com/api/ads/cpl?t=1&amp;cid=16&amp;cuid=53&amp;deviceid=xxx&amp;unixt=xxx" target="_blank" rel="noopener">http://dev.mdap.com/api/ads/cpl?t=1&amp;cid=16&amp;cuid=53&amp;deviceid=xxx&amp;unixt=xxx</a>;</p>
-<p><code>Url.split(&quot;url=&quot;)[1];</code></p>
-<p>可以了。收工，就这么简单。</p>
-<h2 id="match截取"><a href="#match截取" class="headerlink" title="match截取"></a>match截取</h2><p><code>macth</code>截取字符串好处是，可以使用正则表达式来截取字符串。</p>
-<p>例如：<br><code>var Imei = Url.match(/deviceid=(\w+)/)[1];</code></p>
-<p><code>var appId = Url.match(/cid=(\w+)/)[1];</code></p>
-<p><code>var cplId = Url.match(/adid=(\d+)/)[1];</code></p>
-<p><strong>总结：简单的字符串截取可以用<code>split</code>，而复杂的就可以用<code>match</code>来截取</strong></p>
-
-      
-
-      
-    </div> -->
-    
-    <!-- 自动截取摘要 -->
-    <div class="article-entry" itemprop="articleBody">
-    
-    
-        
-            
-            
-                
-                
-            
-                
-                
-            
-            
-                
-                <p><h2 id="split截取"><a href="#split截取" class="headerlink" title="split截取"></a>split截取</h2><p>首先举个栗子：</p>
-<p><strong>比如：</strong><code>detail.html?url=http://dev.mdap.com/api/ads/cpl?t=1&amp;cid=16&amp;cuid=53&amp;deviceid=xxx&amp;unixt=xxx</code></p>
-<p>
-            
-        
-    
-    
-        </div>   
-        <!-- <div class="article-more-link">
-            <a href="/2018/03/23/js-截取网址参数/#more">article.more</a>
-        </div> -->
-    
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/23/js-截取网址参数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-css-左右滑动-时，隐藏底部滚动条" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/19/css-左右滑动-时，隐藏底部滚动条/">css - (左右滑动 时，隐藏底部滚动条)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/19/css-左右滑动-时，隐藏底部滚动条/" class="archive-article-date">
-  	<time datetime="2018-03-19T02:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-19</time>
-</a>
-        
-      </header>
-    
-    <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <p>先上效果图，如下：</p>
-<p><img src="/2018/03/19/css-左右滑动-时，隐藏底部滚动条/pic5.gif" width="70%"></p>
-<p>是不是经常看到此类效果？</p>
-<p>这里如果不借用其它框架，单纯的利用css 来实现怎么做呢？</p>
-<p>1.这一看就要用到overflow，但是用它会有一个默认的滚动条；</p>
-<p>2.那么重点来了，怎么解决这个问题呢？</p>
-<p>3.用&nbsp;::-webkit-scrollbar 就可以很好地解决。</p>
-<p><code>Css</code>代码</p>
-<pre><span style="color: white;">* {
-        padding: 0;
-        margin: 0; 
-    } 
-    .nav {
-        position: fixed;
-        top: 0;
-        background: white;
-        width: 100%;
-        height: 30px;
-        overflow-x: auto;
-    }
-    .nav::-webkit-scrollbar {
-        display: none;
-    }
-        .nav ul {
-            width: 200%;
-            height: 100%;
-        }
-            .nav ul li {
-                float: left;
-                list-style: none;
-                width: 10%;
-                height: 100%;
-                text-align: center;
-                line-height: 30px;
-            }</span></pre>
-
-<p><code>html</code>代码</p>
-<pre><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">div </span><span style="color: #ff0000;">class</span><span style="color: #0000ff;">="nav"</span><span style="color: #0000ff;">&gt;</span>
-    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">ul</span><span style="color: #0000ff;">&gt;</span>
-        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>头条<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
-        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>新闻<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
-        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>搞笑<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
-        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>视频<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
-            <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>动漫<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
-        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>科技<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
-        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>农业<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
-        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>社会<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
-        <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>人文<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">li</span><span style="color: #0000ff;">&gt;</span>
-    <span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">ul</span><span style="color: #0000ff;">&gt;</span>
-<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">div</span><span style="color: #0000ff;">&gt;</span>    </pre>
-
-<p>好，大功告成。</p>
-
-      
-
-      
-    </div> -->
-    
-    <!-- 自动截取摘要 -->
-    <div class="article-entry" itemprop="articleBody">
-    
-    
-        
-            
-            
-                
-                
-            
-                
-                
-            
-            
-                
-                <p><p>先上效果图，如下：</p>
-<p><img src="/2018/03/19/css-左右滑动-时，隐藏底部滚动条/pic5.gif" width="70%"></p>
-<p>
-            
-        
-    
-    
-        </div>   
-        <!-- <div class="article-more-link">
-            <a href="/2018/03/19/css-左右滑动-时，隐藏底部滚动条/#more">article.more</a>
-        </div> -->
-    
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/19/css-左右滑动-时，隐藏底部滚动条/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-vue-引入jq" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/14/vue-引入jq/">vue - (引入jq)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/14/vue-引入jq/" class="archive-article-date">
-  	<time datetime="2018-03-14T05:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-14</time>
-</a>
-        
-      </header>
-    
-    <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>以前其实很拒绝vue+jq一起使用。但是vue写动画特效实在是难受，所以就试着去尝试了下，vue+jq的开发。<br>嗯，挺爽的，哈哈。</p>
-</blockquote>
-<p><img src="/2018/03/14/vue-引入jq/pic6.jpg" width="40%"></p>
-<p>这里讲下，如何在vue-cli中引入jquery。<br>1.找到<code>package.json</code>文件，打开</p>
-<p><pre><span style="color: white;"> “dependencies”: {<br>    “vue”: “^2.5.2”,<br>    “vue-router”: “^3.0.1”,<br>    “jquery”: “^3.1.1”   // 加入此行，版本号可自己定义<br>  },</span></pre><br>2.找到<code>webpack.base.conf.js</code>文件，打开</p>
-<p><pre><span style="color: white;">const path = require(‘path’)<br>const utils = require(‘./utils’)<br>const config = require(‘../config’)<br>const webpack = require(“webpack”)  //加入此行<br>const vueLoaderConfig = require(‘./vue-loader.conf’)</span></pre><br>3.在<code>webpack.base.conf.js</code>文件中，加入</p>
-<p><pre><span style="color: white;">module.exports = {<br>  context: path.resolve(__dirname, ‘../‘),<br>  entry: {<br>    app: ‘./src/main.js’<br>  },<br>  output: {<br>    path: config.build.assetsRoot,<br>    filename: ‘[name].js’,<br>    publicPath: process.env.NODE_ENV === ‘production’<br>      ? config.build.assetsPublicPath<br>      : config.dev.assetsPublicPath<br>  },<br>  resolve: {<br>    extensions: [‘.js’, ‘.vue’, ‘.json’],<br>    alias: {<br>      ‘vue$’: ‘vue/dist/vue.esm.js’,<br>      ‘@’: resolve(‘src’),<br>    }<br>  },<br>　// 加入以下代码<br>  plugins: [<br>  new webpack.optimize.CommonsChunkPlugin(‘common.js’),<br>  new webpack.ProvidePlugin({<br>      jQuery: “jquery”,<br>      $: “jquery”<br>  })<br>  ],</span></pre><br>4.找到<code>main.js</code>打开</p>
-<p><pre><span style="color: white;">import Vue from ‘vue’<br>import App from ‘./App’<br>import router from ‘./router’<br>import $ from ‘jquery’  // 加入此行</span></pre><br>好了，大功告成。<br>npm run dev 走一波！！！</p>
-
-      
-
-      
-    </div> -->
-    
-    <!-- 自动截取摘要 -->
-    <div class="article-entry" itemprop="articleBody">
-    
-    
-        
-            
-            
-                
-                
-            
-                
-                
-            
-            
-                
-                <p><blockquote>
-<p>以前其实很拒绝vue+jq一起使用。但是vue写动画特效实在是难受，所以就试着去尝试了下，vue+jq的开发。<br>嗯，挺爽的，哈哈。</p>
-<p>
-            
-        
-    
-    
-        </div>   
-        <!-- <div class="article-more-link">
-            <a href="/2018/03/14/vue-引入jq/#more">article.more</a>
-        </div> -->
-    
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/14/vue-引入jq/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Scss-入门篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/Scss-入门篇/">Scss - (入门篇)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/07/Scss-入门篇/" class="archive-article-date">
-  	<time datetime="2018-03-07T09:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
-        
-      </header>
-    
-    <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <p>因为网上此类教程有很多，我就抓重点，让项目快速上手。</p>
-<p><img src="/2018/03/07/Scss-入门篇/scsspic.jpg" width="30%"></p>
-<p>如果是在windows系统下，就先安装ruby，官网下载地址：<a href="https://rubyinstaller.org/downloads/" target="_blank" rel="noopener">https://rubyinstaller.org/downloads/</a></p>
-<p>安装完之后，来跟着节奏燥起来。</p>
-<p>1、在命令行中：<code>gem install sass</code></p>
-<p>2、这时候就可以直接进到你的项目文件中：sass &nbsp;–watch scss/:scss/ &nbsp; &nbsp; // 这监听scss整个文件夹，并生成新的css到scss文件夹中。（ps: 这里生成的文件夹也可以自己替换）</p>
-<p>提醒： 这里如果只想改变文件夹中某一个scss文件，可以直接取到确切的值，个人觉得监听整个文件夹比较方便。</p>
-
-      
-
-      
-    </div> -->
-    
-    <!-- 自动截取摘要 -->
-    <div class="article-entry" itemprop="articleBody">
-    
-    
-        
-            
-            
-                
-                
-            
-                
-                
-            
-            
-                
-                <p><p>因为网上此类教程有很多，我就抓重点，让项目快速上手。</p>
-<p><img src="/2018/03/07/Scss-入门篇/scsspic.jpg" width="30%"></p>
-<p>
-            
-        
-    
-    
-        </div>   
-        <!-- <div class="article-more-link">
-            <a href="/2018/03/07/Scss-入门篇/#more">article.more</a>
-        </div> -->
-    
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/07/Scss-入门篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ES6-（数组与对象）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/07/ES6-（数组与对象）/">ES6 - （数组与对象）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/07/ES6-（数组与对象）/" class="archive-article-date">
-  	<time datetime="2018-03-07T02:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
-</a>
-        
-      </header>
-    
-    <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <p>之前的es6 教程中有说过一句代码实现数组去重的方法（<a href="http://www.cnblogs.com/lafitewu/p/8480055.html）" target="_blank" rel="noopener">http://www.cnblogs.com/lafitewu/p/8480055.html）</a></p>
-<p>今天还给大家带来一个新的去重方法：<code>Set</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1,0,2,0,5,4,4,5,0,1]</span><br><span class="line"></span><br><span class="line">let newArr = [...new Set([1,0,2,0,5,4,4,5,0,1])]</span><br><span class="line"></span><br><span class="line">console.log(newArr) &amp;nbsp;// [1,0,2,5,4]</span><br></pre></td></tr></table></figure></p>
-<p>感觉这种方法更为简洁。</p>
-<p>说到这里，此处也碰到一个奇怪的问题。</p>
-<p>console.log(typeof(newArr)) &nbsp;// object</p>
-<p>what? ? ? 这是什么个情况？它不是应该打印出array么？</p>
-<p><img src="/2018/03/07/ES6-（数组与对象）/es6_1.jpg" width="35%"></p>
-<p>&nbsp;</p>
-<p>懵逼中… &nbsp; 10分钟过去后，独自折腾，终于</p>
-<p>要想判断一个类型是不是数组类型，可以用&nbsp;console.log(Array.isArray(arr)) // true</p>
-<p>这时突然想起，以前面试时，总有面试官会问，你如何判断一个变量类型是数组还是对象啊？ 我毫无防备的说 typeof ，嗯还是自己太年轻。</p>
-<p>typeof 也可以，但是得这样玩&nbsp;<strong>console.log(typeof(arr.length))</strong>&nbsp; // number ，之所以可以这样判断，是因为对象是没有 length 这个属性的， 你get了吗？</p>
-<p>最后new Set() 出来的是一个object 类型，这时候可以用 <code>...</code>或者 <code>Array.from(newArr)</code> 来转化成数组类型。 ps: 这是es6 对象转数组</p>
-<p>es5: &nbsp;<code>[].slice.call(newArr2)</code></p>
-<p>&nbsp;</p>
-
-      
-
-      
-    </div> -->
-    
-    <!-- 自动截取摘要 -->
-    <div class="article-entry" itemprop="articleBody">
-    
-    
-        
-            
-            
-                
-                
-            
-                
-                
-            
-            
-                
-                <p><p>之前的es6 教程中有说过一句代码实现数组去重的方法（<a href="http://www.cnblogs.com/lafitewu/p/8480055.html）" target="_blank" rel="noopener">http://www.cnblogs.com/lafitewu/p/8480055.html）</a></p>
-<p>今天还给大家带来一个新的去重方法：<code>Set</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1,0,2,0,5,4,4,5,0,1]</span><br><span class="line"></span><br><span class="line">let newArr = [...new Set([1,0,2,0,5,4,4,5,0,1])]</span><br><span class="line"></span><br><span class="line">console.log(newArr) &amp;nbsp;// [1,0,2,5,4]</span><br></pre></td></tr></table></figure></p>
-<p>
-            
-        
-    
-    
-        </div>   
-        <!-- <div class="article-more-link">
-            <a href="/2018/03/07/ES6-（数组与对象）/#more">article.more</a>
-        </div> -->
-    
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/07/ES6-（数组与对象）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1478,7 +1393,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		Copyright &copy;2018 by lafitewu
+    		Copyright &copy;2019 by lafitewu
     	</div>
       	<div class="footer-right">
       		<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
@@ -1562,6 +1477,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ES6</a>

@@ -176,6 +176,1052 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-timeDate-js-插件优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/05/timeDate-js-插件优化/">timeDate.js 插件优化</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/05/timeDate-js-插件优化/" class="archive-article-date">
+  	<time datetime="2018-01-05T09:27:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-05</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天写的时候，在下面代码处就碰到了问题，</p>
+<p>如下：</p>
+<pre><span style="color: white;">if</span><span style="color: gray;">(data.zero) {
+　　</span><span style="color: white;">if</span><span style="color: gray;">(data.Month_zero) {
+   　　</span><span style="color: white;">if</span>(time.month &lt; 10<span style="color: gray;">) {
+       　　time.month </span>= "0" +<span style="color: gray;"> time.month;
+       }
+    }
+    </span><span style="color: white;">if</span><span style="color: gray;">(data.Day_zero) {
+       </span><span style="color: white;">if</span>(time.day &lt; 10<span style="color: gray;">) {
+           time.day </span>= "0" +<span style="color: gray;"> time.day;
+       }
+    }
+    </span><span style="color: white;">if</span><span style="color: gray;">(data.Hours_zero) {
+       </span><span style="color: white;">if</span>(time.hours &lt; 10<span style="color: gray;">) {
+           time.hours </span>= "0" +<span style="color: gray;"> time.hours;
+       }
+    }
+    </span><span style="color: white;">if</span><span style="color: gray;">(data.Min_zero) {
+       </span><span style="color: white;">if</span>(time.minutes &lt; 10<span style="color: gray;">) {
+           time.minutes </span>= "0" +<span style="color: gray;"> time.minutes;
+       }
+    }
+    </span><span style="color: white;">if</span><span style="color: gray;">(data.Second_zero) {
+      　</span><span style="color: white;">if</span>(time.seconds &lt; 10<span style="color: gray;">) {
+           time.seconds </span>= "0" +<span style="color: gray;"> time.seconds;
+        }
+    }
+}</span></pre>
+
+<p>因为代码耦合程度太高，所以想用一个函数来封装，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Zero(a) &#123;</span><br><span class="line">    if(a &lt; 10) &#123;</span><br><span class="line">        a = “0” + a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>却无法让其改变原始的参数值，挣扎了许久，就放下了。</p>
+<p>今天经过一天的征战，终于得以解决。源码如下：</p>
+<p><code>timeDate.js</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">/</span><br><span class="line">  timeDate.js</span><br><span class="line">  by LafiteWu    </span><br><span class="line">  by QQ:863512936</span><br><span class="line">  2018-01-05 v1.1</span><br><span class="line"> /</span><br><span class="line"></span><br><span class="line">(function($) &#123;</span><br><span class="line">    $.fn.timeDate = function(options) &#123;</span><br><span class="line">        var that = $(this);</span><br><span class="line">        var defaults = &#123;</span><br><span class="line">            show: “Y-M-D-W”, //显示形式</span><br><span class="line">             zero: true, // 是否开启零,也是总开关，当它值为false时，下面的值无效</span><br><span class="line">             Month_zero: true, // 月份是否加零</span><br><span class="line">             Day_zero: true, // 日期上是否加零</span><br><span class="line">             Hours_zero: true, // 小时前是否加零</span><br><span class="line">             Min_zero: true, // 分钟前是否加零</span><br><span class="line">             Second_zero: true // 秒钟前加零</span><br><span class="line">         &#125;;</span><br><span class="line">         var data = $.extend(defaults,options);</span><br><span class="line">         var now = new Date();</span><br><span class="line">         var weekday = [“星期天”,”星期一”,”星期二”,”星期三”,”星期四”,”星期五”,”星期六”];</span><br><span class="line">         var time = &#123;</span><br><span class="line">             year: now.getFullYear(),</span><br><span class="line">             month: now.getMonth()+1,</span><br><span class="line">             day: now.getDate(),</span><br><span class="line">             week: weekday[now.getDay()],</span><br><span class="line">             hours: now.getHours(),</span><br><span class="line">             minutes: now.getMinutes(),</span><br><span class="line">             seconds: now.getSeconds(),</span><br><span class="line">               Zero:function(a) &#123;</span><br><span class="line">                    if(a &lt; 10) &#123;</span><br><span class="line">                       return  a = “0” + a;</span><br><span class="line">                    &#125;else &#123;</span><br><span class="line">　　　　　　　　　　　　　 return a;</span><br><span class="line">　　　　　　　　　　　　&#125;</span><br><span class="line">               &#125;,</span><br><span class="line">               Html:function(a) &#123;</span><br><span class="line">                    that.html(a);</span><br><span class="line">               &#125;</span><br><span class="line">         &#125;;</span><br><span class="line">         if(data.zero) &#123;</span><br><span class="line">             if(data.Month_zero) &#123;</span><br><span class="line">                 time.month = time.Zero(time.month);</span><br><span class="line">             &#125;</span><br><span class="line">             if(data.Day_zero) &#123;</span><br><span class="line">                 time.day = time.Zero(time.day);</span><br><span class="line">             &#125;</span><br><span class="line">             if(data.Hours_zero) &#123;</span><br><span class="line">                 time.hours = time.Zero(time.hours);</span><br><span class="line">             &#125;</span><br><span class="line">             if(data.Min_zero) &#123;</span><br><span class="line">                 time.minutes = time.Zero(time.minutes);</span><br><span class="line">             &#125;</span><br><span class="line">             if(data.Second_zero) &#123;</span><br><span class="line">                 time.seconds = time.Zero(time.seconds);</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         switch(data.show) &#123;</span><br><span class="line">             case(“Y”):</span><br><span class="line">                 time.Html(time.year);</span><br><span class="line">                 break;</span><br><span class="line">             case(“M”):</span><br><span class="line">                 time.Html(time.month);</span><br><span class="line">                 break;</span><br><span class="line">             case(“D”):</span><br><span class="line">                 time.Html(time.day);</span><br><span class="line">                 break;</span><br><span class="line">             case(“H”):</span><br><span class="line">                 time.Html(time.hours);</span><br><span class="line">                 break;</span><br><span class="line">             case(“m”):</span><br><span class="line">                 time.Html(time.minutes);</span><br><span class="line">                 break;</span><br><span class="line">             case(“S”):</span><br><span class="line">                 time.Html(time.seconds);</span><br><span class="line">                 break;</span><br><span class="line">             case(“W”):</span><br><span class="line">                 time.Html(time.week);</span><br><span class="line">                 break;</span><br><span class="line">             case(“Y-M”):</span><br><span class="line">                 time.Html(time.year+”年”+time.month+”月”);</span><br><span class="line">                 break;</span><br><span class="line">             case(“Y/M”):</span><br><span class="line">                 time.Html(time.year+”/“+time.month);</span><br><span class="line">                 break;</span><br><span class="line">             case(“M-D”):</span><br><span class="line">                 time.Html(time.month+”月”+time.day+”日”);</span><br><span class="line">                 break;</span><br><span class="line">             case(“M/D”):</span><br><span class="line">                 time.Html(time.month+”/“+time.day);</span><br><span class="line">                 break;</span><br><span class="line">             case(“M-D-W”):</span><br><span class="line">                 time.Html(time.month+”月”+time.day+”日 “+time.week);</span><br><span class="line">                 break;</span><br><span class="line">             case(“M/D/W”):</span><br><span class="line">                 time.Html(time.month+”/“+time.day+” “+time.week);</span><br><span class="line">                 break;</span><br><span class="line">             case(“Y-M-D”):</span><br><span class="line">                 time.Html(time.year+”年”+time.month+”月”+time.day+”日”);</span><br><span class="line">                 break;</span><br><span class="line">             case(“Y-M-D-W”):</span><br><span class="line">                 time.Html(time.year+”年”+time.month+”月”+time.day+”日 “+time.week);</span><br><span class="line">                 break;</span><br><span class="line">             case(“Y/M/D/W”):</span><br><span class="line">                 time.Html(time.year+”/“+time.month+”/“+time.day+” “+time.week);</span><br><span class="line">                 break;</span><br><span class="line">             case(“Y/M/D”):</span><br><span class="line">                 time.Html(time.year+”/“+time.month+”/“+time.day);</span><br><span class="line">                 break;</span><br><span class="line">             case(“H-m”):</span><br><span class="line">                 time.Html(time.hours+”:”+time.minutes);</span><br><span class="line">                 break;</span><br><span class="line">             case(“H-m-S”):</span><br><span class="line">                 time.Html(time.hours+”:”+time.minutes+”:”+time.seconds);</span><br><span class="line">                 break;</span><br><span class="line">             default:</span><br><span class="line">                 throw new Error(“Check if your format is correct”);</span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(jQuery);</span><br></pre></td></tr></table></figure></p>
+<p>好，优化完成。</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>昨天写的时候，在下面代码处就碰到了问题，</p>
+<p>如下：</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/01/05/timeDate-js-插件优化/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/05/timeDate-js-插件优化/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-向页面中插入不同格式的时间（timeDate-js）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/04/向页面中插入不同格式的时间（timeDate-js）/">向页面中插入不同格式的时间（timeDate.js）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/04/向页面中插入不同格式的时间（timeDate-js）/" class="archive-article-date">
+  	<time datetime="2018-01-04T09:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-04</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>前言，因项目需要，需要在H5页面中插入时间。<br>为了方便以后直接调用，所以动手做了一个小插件。（此插件基于jquery）<br>可以先看看效果（不用插件可以达到一样的效果，方便下次还有调用时间）</p>
+</blockquote>
+<p>如图：</p>
+<p><img src="/2018/01/04/向页面中插入不同格式的时间（timeDate-js）/jq_pic5.png" width="20%"></p>
+<p>先看看我如何调用的，</p>
+<p>代码如下：<br><code>$(“.l_date”).timeDate({show:”H-m”})</code><br><code>$(“.l_year”).timeDate({show:”M-D-W”})</code></p>
+<p>对你没看错，就这两行代码，实现上面的时间和日期。</p>
+<p>最后贴上插件源码，如下：</p>
+<p><pre><span style="color: #008080;">  1</span> <span style="color: #008000;">/<em></em></span><br><span style="color: #008080;">  2</span> <span style="color: #008000;">  timeDate.js<br></span><span style="color: #008080;">  3</span> <span style="color: #008000;"> <em> by LafiteWu<br></em></span><span style="color: #008080;">  4</span> <span style="color: #008000;">  by QQ:863512936<br></span><span style="color: #008080;">  5</span> <span style="color: #008000;"> <em> 2018-01-04 v1.0<br></em></span><span style="color: #008080;">  6</span>  <span style="color: #008000;">/</span><br><span style="color: #008080;">  7</span><br><span style="color: #008080;">  8</span><br><span style="color: #008080;">  9</span> (<span style="color: #0000ff;">function</span><span style="color: #000000;">($) {<br></span><span style="color: #008080;"> 10</span>     $.fn.timeDate = <span style="color: #0000ff;">function</span><span style="color: #000000;">(options) {<br></span><span style="color: #008080;"> 11</span>         <span style="color: #0000ff;">var</span> that = $(<span style="color: #0000ff;">this</span><span style="color: #000000;">);<br></span><span style="color: #008080;"> 12</span>         <span style="color: #0000ff;">var</span> defaults =<span style="color: #000000;"> {<br></span><span style="color: #008080;"> 13</span>             show: “Y/M/D/W”, <span style="color: #008000;">//</span><span style="color: #008000;">显示形式 </span><br><span style="color: #008080;"> 14</span>              zero: <span style="color: #0000ff;">true</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> 是否开启零,也是总开关，当它值为false时，下面的值无效</span><br><span style="color: #008080;"> 15</span>              Month_zero: <span style="color: #0000ff;">true</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> 月份是否加零</span><br><span style="color: #008080;"> 16</span>              Day_zero: <span style="color: #0000ff;">true</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> 日期上是否加零</span><br><span style="color: #008080;"> 17</span>              Hours_zero: <span style="color: #0000ff;">true</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> 小时前是否加零</span><br><span style="color: #008080;"> 18</span>              Min_zero: <span style="color: #0000ff;">true</span>, <span style="color: #008000;">//</span><span style="color: #008000;"> 分钟前是否加零</span><br><span style="color: #008080;"> 19</span>              Second_zero: <span style="color: #0000ff;">true</span> <span style="color: #008000;">//</span><span style="color: #008000;"> 秒钟前加零</span><br><span style="color: #008080;"> 20</span> <span style="color: #000000;">         };<br></span><span style="color: #008080;"> 21</span>          <span style="color: #0000ff;">var</span> data =<span style="color: #000000;"> $.extend(defaults,options);<br></span><span style="color: #008080;"> 22</span>          <span style="color: #0000ff;">var</span> now = <span style="color: #0000ff;">new</span><span style="color: #000000;"> Date();<br></span><span style="color: #008080;"> 23</span>          <span style="color: #0000ff;">var</span> weekday = [“星期天”,”星期一”,”星期二”,”星期三”,”星期四”,”星期五”,”星期六”<span style="color: #000000;">];<br></span><span style="color: #008080;"> 24</span>          <span style="color: #0000ff;">var</span> time =<span style="color: #000000;"> {<br></span><span style="color: #008080;"> 25</span> <span style="color: #000000;">             year: now.getFullYear(),<br></span><span style="color: #008080;"> 26</span>              month: now.getMonth()+1<span style="color: #000000;">,<br></span><span style="color: #008080;"> 27</span> <span style="color: #000000;">             day: now.getDate(),<br></span><span style="color: #008080;"> 28</span> <span style="color: #000000;">             week: weekday[now.getDay()],<br></span><span style="color: #008080;"> 29</span> <span style="color: #000000;">             hours: now.getHours(),<br></span><span style="color: #008080;"> 30</span> <span style="color: #000000;">             minutes: now.getMinutes(),<br></span><span style="color: #008080;"> 31</span> <span style="color: #000000;">             seconds: now.getSeconds(),<br></span><span style="color: #008080;"> 32</span> <span style="color: #000000;">         };<br></span><span style="color: #008080;"> 33</span>          <span style="color: #0000ff;">if</span><span style="color: #000000;">(data.zero) {<br></span><span style="color: #008080;"> 34</span>              <span style="color: #0000ff;">if</span><span style="color: #000000;">(data.Month_zero) {<br></span><span style="color: #008080;"> 35</span>                  <span style="color: #0000ff;">if</span>(time.month &lt; 10<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 36</span>                      time.month = “0” +<span style="color: #000000;"> time.month;<br></span><span style="color: #008080;"> 37</span> <span style="color: #000000;">                 }<br></span><span style="color: #008080;"> 38</span> <span style="color: #000000;">             }<br></span><span style="color: #008080;"> 39</span>              <span style="color: #0000ff;">if</span><span style="color: #000000;">(data.Day_zero) {<br></span><span style="color: #008080;"> 40</span>                  <span style="color: #0000ff;">if</span>(time.day &lt; 10<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 41</span>                      time.day = “0” +<span style="color: #000000;"> time.day;<br></span><span style="color: #008080;"> 42</span> <span style="color: #000000;">                 }<br></span><span style="color: #008080;"> 43</span> <span style="color: #000000;">             }<br></span><span style="color: #008080;"> 44</span>              <span style="color: #0000ff;">if</span><span style="color: #000000;">(data.Hours_zero) {<br></span><span style="color: #008080;"> 45</span>                  <span style="color: #0000ff;">if</span>(time.hours &lt; 10<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 46</span>                      time.hours = “0” +<span style="color: #000000;"> time.hours;<br></span><span style="color: #008080;"> 47</span> <span style="color: #000000;">                 }<br></span><span style="color: #008080;"> 48</span> <span style="color: #000000;">             }<br></span><span style="color: #008080;"> 49</span>              <span style="color: #0000ff;">if</span><span style="color: #000000;">(data.Min_zero) {<br></span><span style="color: #008080;"> 50</span>                  <span style="color: #0000ff;">if</span>(time.minutes &lt; 10<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 51</span>                      time.minutes = “0” +<span style="color: #000000;"> time.minutes;<br></span><span style="color: #008080;"> 52</span> <span style="color: #000000;">                 }<br></span><span style="color: #008080;"> 53</span> <span style="color: #000000;">             }<br></span><span style="color: #008080;"> 54</span>              <span style="color: #0000ff;">if</span><span style="color: #000000;">(data.Second_zero) {<br></span><span style="color: #008080;"> 55</span>                  <span style="color: #0000ff;">if</span>(time.seconds &lt; 10<span style="color: #000000;">) {<br></span><span style="color: #008080;"> 56</span>                      time.seconds = “0” +<span style="color: #000000;"> time.seconds;<br></span><span style="color: #008080;"> 57</span> <span style="color: #000000;">                 }<br></span><span style="color: #008080;"> 58</span> <span style="color: #000000;">             }<br></span><span style="color: #008080;"> 59</span> <span style="color: #000000;">         }<br></span><span style="color: #008080;"> 60</span>          <span style="color: #0000ff;">switch</span><span style="color: #000000;">(data.show) {<br></span><span style="color: #008080;"> 61</span>              <span style="color: #0000ff;">case</span>(“Y”<span style="color: #000000;">):<br></span><span style="color: #008080;"> 62</span> <span style="color: #000000;">                 Html(time.year);<br></span><span style="color: #008080;"> 63</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 64</span>              <span style="color: #0000ff;">case</span>(“M”<span style="color: #000000;">):<br></span><span style="color: #008080;"> 65</span> <span style="color: #000000;">                 Html(time.month);<br></span><span style="color: #008080;"> 66</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 67</span>              <span style="color: #0000ff;">case</span>(“D”<span style="color: #000000;">):<br></span><span style="color: #008080;"> 68</span> <span style="color: #000000;">                 Html(time.day);<br></span><span style="color: #008080;"> 69</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 70</span>              <span style="color: #0000ff;">case</span>(“H”<span style="color: #000000;">):<br></span><span style="color: #008080;"> 71</span> <span style="color: #000000;">                 Html(time.hours);<br></span><span style="color: #008080;"> 72</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 73</span>              <span style="color: #0000ff;">case</span>(“m”<span style="color: #000000;">):<br></span><span style="color: #008080;"> 74</span> <span style="color: #000000;">                 Html(time.minutes);<br></span><span style="color: #008080;"> 75</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 76</span>              <span style="color: #0000ff;">case</span>(“S”<span style="color: #000000;">):<br></span><span style="color: #008080;"> 77</span> <span style="color: #000000;">                 Html(time.seconds);<br></span><span style="color: #008080;"> 78</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 79</span>              <span style="color: #0000ff;">case</span>(“W”<span style="color: #000000;">):<br></span><span style="color: #008080;"> 80</span> <span style="color: #000000;">                 Html(time.week);<br></span><span style="color: #008080;"> 81</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 82</span>              <span style="color: #0000ff;">case</span>(“Y-M”<span style="color: #000000;">):<br></span><span style="color: #008080;"> 83</span>                  Html(time.year+”年”+time.month+”月”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 84</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 85</span>              <span style="color: #0000ff;">case</span>(“Y/M”<span style="color: #000000;">):<br></span><span style="color: #008080;"> 86</span>                  Html(time.year+”/“+<span style="color: #000000;">time.month);<br></span><span style="color: #008080;"> 87</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 88</span>              <span style="color: #0000ff;">case</span>(“M-D”<span style="color: #000000;">):<br></span><span style="color: #008080;"> 89</span>                  Html(time.month+”月”+time.day+”日”<span style="color: #000000;">);<br></span><span style="color: #008080;"> 90</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 91</span>              <span style="color: #0000ff;">case</span>(“M/D”<span style="color: #000000;">):<br></span><span style="color: #008080;"> 92</span>                  Html(time.month+”/“+<span style="color: #000000;">time.day);<br></span><span style="color: #008080;"> 93</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 94</span>              <span style="color: #0000ff;">case</span>(“M-D-W”<span style="color: #000000;">):<br></span><span style="color: #008080;"> 95</span>                  Html(time.month+”月”+time.day+”日 “+<span style="color: #000000;">time.week);<br></span><span style="color: #008080;"> 96</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;"> 97</span>              <span style="color: #0000ff;">case</span>(“M/D/W”<span style="color: #000000;">):<br></span><span style="color: #008080;"> 98</span>                  Html(time.month+”/“+time.day+” “+<span style="color: #000000;">time.week);<br></span><span style="color: #008080;"> 99</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">100</span>              <span style="color: #0000ff;">case</span>(“Y-M-D”<span style="color: #000000;">):<br></span><span style="color: #008080;">101</span>                  Html(time.year+”年”+time.month+”月”+time.day+”日”<span style="color: #000000;">);<br></span><span style="color: #008080;">102</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">103</span>              <span style="color: #0000ff;">case</span>(“Y-M-D-W”<span style="color: #000000;">):<br></span><span style="color: #008080;">104</span>                  Html(time.year+”年”+time.month+”月”+time.day+”日 “+<span style="color: #000000;">time.week);<br></span><span style="color: #008080;">105</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">106</span>              <span style="color: #0000ff;">case</span>(“Y/M/D/W”<span style="color: #000000;">):<br></span><span style="color: #008080;">107</span>                  Html(time.year+”/“+time.month+”/“+time.day+” “+<span style="color: #000000;">time.week);<br></span><span style="color: #008080;">108</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">109</span>              <span style="color: #0000ff;">case</span>(“Y/M/D”<span style="color: #000000;">):<br></span><span style="color: #008080;">110</span>                  Html(time.year+”/“+time.month+”/“+<span style="color: #000000;">time.day);<br></span><span style="color: #008080;">111</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">112</span>              <span style="color: #0000ff;">case</span>(“H-m”<span style="color: #000000;">):<br></span><span style="color: #008080;">113</span>                  Html(time.hours+”:”+<span style="color: #000000;">time.minutes);<br></span><span style="color: #008080;">114</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">115</span>              <span style="color: #0000ff;">case</span>(“H-m-S”<span style="color: #000000;">):<br></span><span style="color: #008080;">116</span>                  Html(time.hours+”:”+time.minutes+”:”+<span style="color: #000000;">time.seconds);<br></span><span style="color: #008080;">117</span>                  <span style="color: #0000ff;">break</span><span style="color: #000000;">;<br></span><span style="color: #008080;">118</span>              <span style="color: #0000ff;">default</span><span style="color: #000000;">:<br></span><span style="color: #008080;">119</span>                  <span style="color: #0000ff;">throw</span> <span style="color: #0000ff;">new</span> Error(“Check if your format is correct”<span style="color: #000000;">);<br></span><span style="color: #008080;">120</span> <span style="color: #000000;">         }<br></span><span style="color: #008080;">121</span>          <span style="color: #0000ff;">function</span><span style="color: #000000;"> Html(a) {<br></span><span style="color: #008080;">122</span> <span style="color: #000000;">             that.html(a);<br></span><span style="color: #008080;">123</span> <span style="color: #000000;">         }<br></span><span style="color: #008080;">124</span> <span style="color: #000000;">    }<br></span><span style="color: #008080;">125</span> })(jQuery);</pre><br></p>
+<p>最后使用说明如下：</p>
+<p>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(“.class”).timeDate(&#123;</span><br><span class="line">    show: “Y/M/D/W”, //显示形式 Y、M、W、Y-M、M-D-W、Y/M/D/W、H-m、H-m-S 等等</span><br><span class="line">    zero: true, // 是否开启零,也是总开关，当它值为false时，下面的值无效</span><br><span class="line">    Month_zero: true, // 月份是否加零</span><br><span class="line">    Day_zero: true, // 日期上是否加零</span><br><span class="line">    Hours_zero: true, // 小时前是否加零</span><br><span class="line">    Min_zero: true, // 分钟前是否加零</span><br><span class="line">    Second_zero: true // 秒钟前加零    </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>嗯，就是这么容易，大家应该会用了吧，妈妈再也不用担心我写时间麻烦了。</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><blockquote>
+<p>前言，因项目需要，需要在H5页面中插入时间。<br>为了方便以后直接调用，所以动手做了一个小插件。（此插件基于jquery）<br>可以先看看效果（不用插件可以达到一样的效果，方便下次还有调用时间）</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/01/04/向页面中插入不同格式的时间（timeDate-js）/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/04/向页面中插入不同格式的时间（timeDate-js）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-html-黑科技-4（禁止H5页面滚动）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/04/html-黑科技-4（禁止H5页面滚动）/">html - 黑科技-4（禁止H5页面滚动）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/04/html-黑科技-4（禁止H5页面滚动）/" class="archive-article-date">
+  	<time datetime="2018-01-04T02:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-04</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>当做移动端H5项目的时候，会碰到页面上下可以滑动。这个时候可以通过以下代码来禁止滚动。</p>
+<p>原生版js:<br>document.querySelector(‘body’).addEventListener(‘touchmove’, function(e) {<br>    　　e.preventDefault();<br>});</p>
+<p>jquery版:<br>$(“body”).bind(‘touchmove’,function(e) {<br>    　　e.preventDefault()<br>});</p>
+<p>以上这两种方法都可以实现，妈妈再也不用担心，我的页面可以随意拖动了。</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>当做移动端H5项目的时候，会碰到页面上下可以滑动。这个时候可以通过以下代码来禁止滚动。</p>
+<p>原生版js:<br>document.querySelector(‘body’).addEventListener(‘touchmove’, function(e) {<br>    　　e.preventDefault();<br>});</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/01/04/html-黑科技-4（禁止H5页面滚动）/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/04/html-黑科技-4（禁止H5页面滚动）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-html-黑科技-3（调用qq对话）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/29/html-黑科技-3（调用qq对话）/">html - 黑科技-3（调用qq对话）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/29/html-黑科技-3（调用qq对话）/" class="archive-article-date">
+  	<time datetime="2017-12-29T06:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-29</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在的APP很多都可以打开QQ，那么在H5中，或者pc端怎么打开呢？</p>
+<p>来上代码：</p>
+<p>// 调用QQ（pc 端）<br><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=" target="_blank" rel="noopener">http://wpa.qq.com/msgrd?v=3&amp;uin=</a> // 在最后面加上qq号</p>
+<p>在a标签中引入这个地址，pc端则可以打开QQ对话了。</p>
+<p>// 调用QQ（手机上调用）ps: 浏览器模拟器无效</p>
+<p>QQ联系人：</p>
+<p>&lt;a href=”mqqwpa://im/chat?&nbsp;chat_type=wpa&amp;uin=86<strong>*</strong>936&amp;version=1&amp;src_type=web&amp;web_src=bjhuli.com”&gt;报名咨询&lt;/a&gt; &nbsp;// ps: 微信内打开无效</p>
+<p>QQ群：</p>
+<p>&lt;a href=”mqqapi://card/show_pslcard?&nbsp;src_type=internal&amp;version=1&amp;uin=18863883&amp;card_type=group&amp;source=external”&gt;QQ群&lt;/a&gt;</p>
+<p>这一节黑科技就讲到这里了。</p>
+<p>&nbsp;</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>现在的APP很多都可以打开QQ，那么在H5中，或者pc端怎么打开呢？</p>
+<p>来上代码：</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2017/12/29/html-黑科技-3（调用qq对话）/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/29/html-黑科技-3（调用qq对话）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-html-黑科技-2（获取当前的IP地址）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/27/html-黑科技-2（获取当前的IP地址）/">html - 黑科技-2（获取当前的IP地址）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/27/html-黑科技-2（获取当前的IP地址）/" class="archive-article-date">
+  	<time datetime="2017-12-27T06:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-27</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>有时候我们想要获取ip地址，这时候我来用两行代码实现这个功能。</p>
+<p>首先我们需要引入一个js,&lt;script src=”<a href="http://pv.sohu.com/cityjson?ie=utf-8&quot;&gt;&lt;/script" target="_blank" rel="noopener">http://pv.sohu.com/cityjson?ie=utf-8&quot;&gt;&lt;/script</a>&gt;</p>
+<p>然后输入以下代码试试：</p>
+<p>alert(returnCitySN[‘cip’] + returnCitySN[‘cname’]);</p>
+<p>这个时候，就会弹出当前IP地址和当前城市。</p>
+<p>这个时候就大功告成了。</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>有时候我们想要获取ip地址，这时候我来用两行代码实现这个功能。</p>
+<p>首先我们需要引入一个js,&lt;script src=”<a href="http://pv.sohu.com/cityjson?ie=utf-8&quot;&gt;&lt;/script" target="_blank" rel="noopener">http://pv.sohu.com/cityjson?ie=utf-8&quot;&gt;&lt;/script</a>&gt;</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2017/12/27/html-黑科技-2（获取当前的IP地址）/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/27/html-黑科技-2（获取当前的IP地址）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-html-黑科技-1（调用手机中的电话）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/27/html-黑科技-1（调用手机中的电话）/">html - 黑科技-1（调用手机中的电话）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/27/html-黑科技-1（调用手机中的电话）/" class="archive-article-date">
+  	<time datetime="2017-12-27T06:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-27</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>有时候做移动端的H5页面时，希望可以直接调用手机电话。</p>
+<p>这时候一行代码就可以实现这个功能，如下：</p>
+<p>&lt;a href=”tel://156<em>**</em>2023”&gt;拨打电话&lt;/a&gt;</p>
+<p>对的，你没看错，就这一行代码，就可以实现了。</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>有时候做移动端的H5页面时，希望可以直接调用手机电话。</p>
+<p>这时候一行代码就可以实现这个功能，如下：</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2017/12/27/html-黑科技-1（调用手机中的电话）/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">html</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/27/html-黑科技-1（调用手机中的电话）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-three-js-入门三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/26/three-js-入门三/">three.js - (入门三)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/26/three-js-入门三/" class="archive-article-date">
+  	<time datetime="2017-12-26T08:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-26</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>前面两节讲得都是在舞台上创建角色，这一节我们就让角色动起来。</p>
+<p>three.js 中一般是用requestAnimationFrame();来做动画，当然也可以用setInterval定时器，这里不建议使用。</p>
+<p>因为动画的核心就只有这个函数，然后如何做成何种动画，就靠自己去构思，去尝试了。</p>
+<p>话不多说，上代码：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE html</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html </span><span style="color: #ff0000;">lang</span><span style="color: #0000ff;">=”en”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">charset</span><span style="color: #0000ff;">=”UTF-8”</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>three.js<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">script </span><span style="color: #ff0000;">src</span><span style="color: #0000ff;">=”js/three.js”</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span><br>        <span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 创建场景</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> scene </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.Scene();<br><br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 创建相机  90 -&gt; 视角；相机拍摄面 -&gt; 一般为长宽比；0.1 -&gt; 近裁剪面； 1000 -&gt; 远裁剪面</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> camera </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.PerspectiveCamera(</span><span style="background-color: #f5f5f5; color: #000000;">90</span><span style="background-color: #f5f5f5; color: #000000;">, window.innerWidth</span><span style="background-color: #f5f5f5; color: #000000;">/</span><span style="background-color: #f5f5f5; color: #000000;">window.innerHeight, 0.1, 1000);</span><br><br>        <span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 渲染器</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> renderer </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.WebGLRenderer();<br>        renderer.setSize(window.innerWidth, window.innerHeight);<br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 设置背景颜色</span><br><span style="background-color: #f5f5f5; color: #000000;">        renderer.setClearColor(</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">#5AC7FF</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">);<br>        document.body.appendChild(renderer.domElement);<br><br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 创建物体   CubeGeometry 代表立体图形 1,3,2 分别代表长宽高</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> geometry </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.CubeGeometry(</span><span style="background-color: #f5f5f5; color: #000000;">1</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">3</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">2</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">2</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">2</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">5</span><span style="background-color: #f5f5f5; color: #000000;">);<br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;">网孔基础材料（MeshBasicMaterial）为其填充颜色</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> material </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.MeshBasicMaterial({color: </span><span style="background-color: #f5f5f5; color: #000000;">“</span><span style="background-color: #f5f5f5; color: #000000;">#990033</span><span style="background-color: #f5f5f5; color: #000000;">“</span><span style="background-color: #f5f5f5; color: #000000;">});<br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;">网孔(Mesh)：网孔是用来承载几何模型的一个对象，还可以把材料应用到它上面</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> cube </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.Mesh(geometry, material);<br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;">将物体添加到场景</span><br><span style="background-color: #f5f5f5; color: #000000;">        scene.add(cube);<br>        camera.position.z </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #000000;">5</span><span style="background-color: #f5f5f5; color: #000000;">;<br>        renderer.render(scene, camera);<br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;">渲染循环（render loop）</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">function</span><span style="background-color: #f5f5f5; color: #000000;"> render() {<br>            </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> requestAnimationFrame 相当于setInterval </span><br><span style="background-color: #f5f5f5; color: #000000;">            requestAnimationFrame(render);<br>            </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> cube.rotation.x += 0.1;</span><br><span style="background-color: #f5f5f5; color: #000000;">            cube.rotation.y </span><span style="background-color: #f5f5f5; color: #000000;">+=</span> <span style="background-color: #f5f5f5; color: #000000;">0.05</span><span style="background-color: #f5f5f5; color: #000000;">;<br>            </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> cube.rotation.z += 0.1;</span><br><span style="background-color: #f5f5f5; color: #000000;">            renderer.render(scene, camera);<br>        }<br>        render();<br>    </span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span></pre><br></div>
+
+<p>这样，就可以在屏幕中间，看到一个自转的立方体。</p>
+<p>说起自转，下节就讲讲如何在屏幕中间，做一个自转的地球。</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>前面两节讲得都是在舞台上创建角色，这一节我们就让角色动起来。</p>
+<p>three.js 中一般是用requestAnimationFrame();来做动画，当然也可以用setInterval定时器，这里不建议使用。</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2017/12/26/three-js-入门三/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/26/three-js-入门三/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-three-js-入门二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/16/three-js-入门二/">three.js - (入门二)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/16/three-js-入门二/" class="archive-article-date">
+  	<time datetime="2017-12-16T07:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>上一章节讲了如何完整的创建一个three.js的简单例子，这一节，分别细说每个必要元素的类别及功能。</p>
+<p>讲在前面的话：这一节主要是细说类别。那么我希望大家多去尝试每个功能，就像刚买了新手机一样，每个新鲜的功能都去试一下，</p>
+<p>这样自己才能深刻得体会到，这个代码原来是这个效果，这个功能原来是这个代码实现的。让我们进入正题：</p>
+<p>1.renderer(渲染器),用法及参数如下：</p>
+<p>renderer=new THREE.WebGLRenderer({<br>      　　antialias:true,//antialias:true/false是否开启反锯齿<br>      　　precision:”highp”,//precision:highp/mediump/lowp着色精度选择<br>      　　alpha:true,//alpha:true/false是否可以设置背景色透明<br>      　　premultipliedAlpha:false,//?<br>      　　stencil:false,//?<br>      　　preserveDrawingBuffer:true,//preserveDrawingBuffer:true/false是否保存绘图缓冲<br>      　　maxLights:1//maxLights:最大灯光数<br>})</p>
+<p>2.camera（相机）</p>
+<p>　　a.正投影相机：THREE.OrthographicCamera(left, right, top, bottom, near, far) （远近高低比例都相同）</p>
+<p>　　b.透视投影相机：THREE.PerspectiveCamera(fov, aspect, near, far) （远处的物体比近处的物体小）</p>
+<p>　　fov相当于视角，当它为0的时候，相当于闭着眼。这里取值多为45左右，当然也可以自己设不同的值试一试效果；</p>
+<p>　　near：可以认为是眼睛距离近处的距离；</p>
+<p>　　far：表示你远处的裁面；</p>
+<p>　　aspect：实际窗口的纵横比，即宽度除以高度</p>
+<p>3.light（光源）</p>
+<p>　　a.环境光THREE.AmbientLight(hex) &nbsp; // hex:16进制的颜色值</p>
+<p>　　什么是环境光？</p>
+<p>　　环境光是经过多次反射而来的光称为环境光，无法确定其最初的方向。环境光是一种无处不在的光。环境光源放出的光线被认为来自任何方向。</p>
+<p>　　因此，当你仅为场景指定环境光时，所有的物体无论法向量如何，都将表现为同样的明暗程度。（这是因为，反射光可以从各个方向进入您的眼睛）</p>
+<p>&nbsp;</p>
+<p>　　b.点光源：PointLight( color, intensity, distance ) &nbsp;</p>
+<p>　　Color：光的颜色;</p>
+<p>　　Intensity：光的强度;</p>
+<p>　　distance：光的距离</p>
+<p>&nbsp;</p>
+<p>　　c.聚光灯：THREE.SpotLight( hex, intensity, distance, angle, exponent )</p>
+<p>　　Angle：聚光灯着色的角度;</p>
+<p>　　exponent：光源模型中，衰减的一个参数，越大衰减约快</p>
+<p>&nbsp;</p>
+<p>　　d.平行光：THREE.DirectionalLight = function ( hex, intensity )</p>
+<p>4.geometry（各种形状）</p>
+<p>　　a.长方体：THREE.CubeGeometry(width, height, depth, widthSegments, heightSegments, depthSegments);</p>
+<p>　　b.平面：THREE.PlaneGeometry(width, height, widthSegments, heightSegments);</p>
+<p>　　c.球体：THREE.SphereGeometry(radius, segmentsWidth, segmentsHeight, phiStart, phiLength, thetaStart, thetaLength);</p>
+<p>_　　_d.圆形：THREE.CircleGeometry(radius, segments, thetaStart, thetaLength);</p>
+<p>　　e.圆柱体：THREE.CylinderGeometry(radiusTop, radiusBottom, height,radiusSegments, heightSegments, openEnded) &nbsp;//ps:当openEnded -&gt; 为 true时，上下不封口。</p>
+<p>　　f.正四面体：THREE.TetrahedronGeometry(radius, detail);</p>
+<p>　　g.正八面体：THREE.OctahedronGeometry(radius, detail);</p>
+<p>　　h.正十二面体：THREE.IcosahedronGeometry(radius, detail);</p>
+<p>　　i.圆环：THREE.TorusGeometry(radius, tube, radialSegments, tubularSegments, arc);</p>
+<p>　　j.圆环结：THREE.TorusKnotGeometry(radius, tube, radialSegments, tubularSegments, p, q, heightScale);</p>
+<p>5.material（材质）</p>
+<p>　　a.基本材质：THREE.MeshBasicMaterial（opt）</p>
+<p>　　opt对象参数：</p>
+<p>　　visible ：是否可见，默认为 true</p>
+<p>　　side ：渲染面片正面或是反面，默认为正面 THREE.FrontSide ，可设置为反面THREE.BackSide ，或双面 THREE.DoubleSide</p>
+<p>　　wireframe ：是否渲染线而非面，默认为 false</p>
+<p>　　color ：十六进制 RGB 颜色</p>
+<p>　　map ：使用纹理贴图</p>
+<p>&nbsp;</p>
+<p>　　b.Lambert 材质（MeshLambertMaterial）</p>
+<p>　　opt参数：</p>
+<p>　　color：设置材质颜色</p>
+<p>　　ambient 表示对环境光的反射能力，只有当设置了 AmbientLight 后，该值才是有效的</p>
+<p>　　emissive 是材质的自发光颜色，可以用来表现光源的颜色</p>
+<p>&nbsp;</p>
+<p>　　c.Phong 材质（MeshPhongMaterial）</p>
+<p>　　opt参数：</p>
+<p>　　color,ambient,emissive: 同上;</p>
+<p>　　specular: 镜面反射系数作说明</p>
+<p>　　shininess: 当 shininess 值越大时，高光的光斑越小，默认值为 30</p>
+<p>&nbsp;</p>
+<p>介绍到这里，大致的一些属性及种类就介绍到这里了。希望大家最好能一一尝试，这样看是看不出什么的，实际有什么不同的，当尝试之后，会茅塞顿开。</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>上一章节讲了如何完整的创建一个three.js的简单例子，这一节，分别细说每个必要元素的类别及功能。</p>
+<p>讲在前面的话：这一节主要是细说类别。那么我希望大家多去尝试每个功能，就像刚买了新手机一样，每个新鲜的功能都去试一下，</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2017/12/16/three-js-入门二/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/16/three-js-入门二/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-three-js-入门一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -450,7 +1496,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		Copyright &copy;2018 by lafitewu
+    		Copyright &copy;2019 by lafitewu
     	</div>
       	<div class="footer-right">
       		<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
@@ -534,6 +1580,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ES6</a>
