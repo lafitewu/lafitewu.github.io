@@ -5,23 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="https://lafitewu.github.io/blog">
   <title>vue导出Excel | lafitewu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="开发背景：后台数据只能展示在页面，无法导入到本地进行数据分析。开发成果：将导出到Excel功能封装成一个公用js函数，供其他vue页面复用。  1.安装vue插件包npm install --save xlsx file-saver 2.编写公用js函数/publicFn/index.js 代码如下：123456789101112131415import FileSaver from &amp;apos">
 <meta name="keywords" content="vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue导出Excel">
-<meta property="og:url" content="http://yoursite.com/2019/02/27/vue导出Excel/index.html">
+<meta property="og:url" content="https://lafitewu.github.io/blog/2019/02/27/vue导出Excel/index.html">
 <meta property="og:site_name" content="lafitewu">
 <meta property="og:description" content="开发背景：后台数据只能展示在页面，无法导入到本地进行数据分析。开发成果：将导出到Excel功能封装成一个公用js函数，供其他vue页面复用。  1.安装vue插件包npm install --save xlsx file-saver 2.编写公用js函数/publicFn/index.js 代码如下：123456789101112131415import FileSaver from &amp;apos">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/blog/2019/02/27/vue导出Excel/one.png">
+<meta property="og:image" content="https://lafitewu.github.io/blog/blog/2019/02/27/vue导出Excel/one.png">
 <meta property="og:updated_time" content="2019-03-15T01:26:14.138Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue导出Excel">
 <meta name="twitter:description" content="开发背景：后台数据只能展示在页面，无法导入到本地进行数据分析。开发成果：将导出到Excel功能封装成一个公用js函数，供其他vue页面复用。  1.安装vue插件包npm install --save xlsx file-saver 2.编写公用js函数/publicFn/index.js 代码如下：123456789101112131415import FileSaver from &amp;apos">
-<meta name="twitter:image" content="http://yoursite.com/blog/2019/02/27/vue导出Excel/one.png">
+<meta name="twitter:image" content="https://lafitewu.github.io/blog/blog/2019/02/27/vue导出Excel/one.png">
   
     <link rel="alternative" href="/atom.xml" title="lafitewu" type="application/atom+xml">
   
@@ -203,7 +203,7 @@
 <h2 id="1-安装vue插件包"><a href="#1-安装vue插件包" class="headerlink" title="1.安装vue插件包"></a>1.安装vue插件包</h2><p><code>npm install --save xlsx file-saver</code></p>
 <h2 id="2-编写公用js函数"><a href="#2-编写公用js函数" class="headerlink" title="2.编写公用js函数"></a>2.编写公用js函数</h2><p><code>/publicFn/index.js</code> 代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import FileSaver from &apos;file-saver&apos;;</span><br><span class="line">import XLSX from &apos;xlsx&apos;;</span><br><span class="line">export default &#123;</span><br><span class="line">    // 导出Excel表格</span><br><span class="line">    exportExcel (name) &#123;</span><br><span class="line">        /* generate workbook object from table */</span><br><span class="line">        var wb = XLSX.utils.table_to_book(document.querySelector(&apos;#lafite_datas&apos;))</span><br><span class="line">        /* get binary string as output */</span><br><span class="line">        var wbout = XLSX.write(wb, &#123; bookType: &apos;xlsx&apos;, bookSST: true, type: &apos;array&apos; &#125;)</span><br><span class="line">        try &#123;</span><br><span class="line">            FileSaver.saveAs(new Blob([wbout], &#123; type: &apos;application/octet-stream&apos; &#125;), name)</span><br><span class="line">        &#125; catch (e) &#123; if (typeof console !== &apos;undefined&apos;) console.log(e, wbout) &#125;</span><br><span class="line">        return wbout</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>ps: <code>#lafite_datas</code> 可改成你自己的table中的id名,<code>name</code>是参数，通过调用的时候传过来的，它是文件的命名。</p>
-<h2 id="3-在main-js中引入"><a href="#3-在main-js中引入" class="headerlink" title="3.在main.js中引入"></a>3.在main.js中引入</h2><p>如图：<br><img src="/blog/2019/02/27/vue导出Excel/one.png" width="60%"></p>
+<h2 id="3-在main-js中引入"><a href="#3-在main-js中引入" class="headerlink" title="3.在main.js中引入"></a>3.在main.js中引入</h2><p>如图：<br><img src="/blog/blog/2019/02/27/vue导出Excel/one.png" width="60%"></p>
 <h2 id="4-调用"><a href="#4-调用" class="headerlink" title="4.调用"></a>4.调用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.publicFns.exportExcel(Name);</span><br></pre></td></tr></table></figure>
 
       
@@ -245,7 +245,7 @@
 <h2 id="1-安装vue插件包"><a href="#1-安装vue插件包" class="headerlink" title="1.安装vue插件包"></a>1.安装vue插件包</h2><p><code>npm install --save xlsx file-saver</code></p>
 <h2 id="2-编写公用js函数"><a href="#2-编写公用js函数" class="headerlink" title="2.编写公用js函数"></a>2.编写公用js函数</h2><p><code>/publicFn/index.js</code> 代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import FileSaver from &apos;file-saver&apos;;</span><br><span class="line">import XLSX from &apos;xlsx&apos;;</span><br><span class="line">export default &#123;</span><br><span class="line">    // 导出Excel表格</span><br><span class="line">    exportExcel (name) &#123;</span><br><span class="line">        /* generate workbook object from table */</span><br><span class="line">        var wb = XLSX.utils.table_to_book(document.querySelector(&apos;#lafite_datas&apos;))</span><br><span class="line">        /* get binary string as output */</span><br><span class="line">        var wbout = XLSX.write(wb, &#123; bookType: &apos;xlsx&apos;, bookSST: true, type: &apos;array&apos; &#125;)</span><br><span class="line">        try &#123;</span><br><span class="line">            FileSaver.saveAs(new Blob([wbout], &#123; type: &apos;application/octet-stream&apos; &#125;), name)</span><br><span class="line">        &#125; catch (e) &#123; if (typeof console !== &apos;undefined&apos;) console.log(e, wbout) &#125;</span><br><span class="line">        return wbout</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>ps: <code>#lafite_datas</code> 可改成你自己的table中的id名,<code>name</code>是参数，通过调用的时候传过来的，它是文件的命名。</p>
-<h2 id="3-在main-js中引入"><a href="#3-在main-js中引入" class="headerlink" title="3.在main.js中引入"></a>3.在main.js中引入</h2><p>如图：<br><img src="/blog/2019/02/27/vue导出Excel/one.png" width="60%"></p>
+<h2 id="3-在main-js中引入"><a href="#3-在main-js中引入" class="headerlink" title="3.在main.js中引入"></a>3.在main.js中引入</h2><p>如图：<br><img src="/blog/blog/2019/02/27/vue导出Excel/one.png" width="60%"></p>
 <h2 id="4-调用"><a href="#4-调用" class="headerlink" title="4.调用"></a>4.调用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.publicFns.exportExcel(Name);</span><br></pre></td></tr></table></figure>
 
         </div>
@@ -326,7 +326,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/02/27/vue导出Excel/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lafitewu.github.io/blog/2019/02/27/vue导出Excel/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -492,15 +492,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">www</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -513,6 +509,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">

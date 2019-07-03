@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="https://lafitewu.github.io/blog">
   <title>lafitewu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="吴丰池,吴丰池的博客,lafitewu">
 <meta name="keywords" content="吴丰池,吴丰池的博客,lafitewu">
 <meta property="og:type" content="website">
 <meta property="og:title" content="lafitewu">
-<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+<meta property="og:url" content="https://lafitewu.github.io/blog/page/4/index.html">
 <meta property="og:site_name" content="lafitewu">
 <meta property="og:description" content="吴丰池,吴丰池的博客,lafitewu">
 <meta property="og:locale" content="default">
@@ -841,7 +841,7 @@
 <p>发现项目中的背景图片不见了，蒙圈中….</p>
 <p>别懵了，我来拯救你。</p>
 <p>首先，我的静态资源目录如下：</p>
-<p><img src="/blog/2018/01/17/vue-js-打包后，css中背景图路径出错/vue_pic5.png" width="20%"></p>
+<p><img src="/blog/blog/2018/01/17/vue-js-打包后，css中背景图路径出错/vue_pic5.png" width="20%"></p>
 <p>首先我们找到<code>/build/webpack.prod.conf.js</code>文件，并打开。找到<strong>output</strong>关键词所在的地方</p>
 <p>配置代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">   publicPath: ‘./‘, // 只加入了这一行，其它的未变</span><br><span class="line">   path: config.build.assetsRoot,</span><br><span class="line">   filename: utils.assetsPath(‘js/[name].[chunkhash].js’),</span><br><span class="line">   chunkFilename: utils.assetsPath(‘js/[id].[chunkhash].js’)</span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure></p>
 <p>然后第二步：找到<code>/build/utils.js</code>文件，找到<strong>options.extract</strong>关键词所在地方</p>
@@ -978,7 +978,7 @@
 <p>最后是主页面<code>app.vue</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=”app”&gt;</span><br><span class="line">    &lt;a href=”news.html”&gt;news&lt;/a&gt;&lt;br&gt;</span><br><span class="line">    &lt;a href=”material.html”&gt;material&lt;/a&gt;&lt;br&gt;</span><br><span class="line">    &lt;a href=”strategy.html”&gt;strategy&lt;/a&gt;&lt;br&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure></p>
 <p>然后重启<code>npm run dev</code>;</p>
 <p>就可以看到如下图界面</p>
-<p><img src="/blog/2018/01/17/vue-js-多页面配置/vue_pic7.png" width="40%"></p>
+<p><img src="/blog/blog/2018/01/17/vue-js-多页面配置/vue_pic7.png" width="40%"></p>
 <p>这个时候vue多页面配置就大功告成了。</p>
 
       
@@ -1545,15 +1545,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">www</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1566,6 +1562,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -5,24 +5,24 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="https://lafitewu.github.io/blog">
   <title>vue - (axios与vue-resource) | lafitewu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="今天我们来讲讲vue中调api的两种常见方法。 由于vue2.0开始，对vue-resource不在维护更新。所以导致很多人开始入坑axios。 当我用起了axios，嗯，它是真的坑。最坑的是它不支持跨域。  如果你项目打包上线依旧需要跨域，我劝你就不要用axios了，会把自己坑死的。（这时候就可以用vue-resource） 但是如果只是在环境上测试，你可以使用proxyTable代理。 具体使">
 <meta name="keywords" content="vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue - (axios与vue-resource)">
-<meta property="og:url" content="http://yoursite.com/2018/04/10/vue-axios与vue-resource/index.html">
+<meta property="og:url" content="https://lafitewu.github.io/blog/2018/04/10/vue-axios与vue-resource/index.html">
 <meta property="og:site_name" content="lafitewu">
 <meta property="og:description" content="今天我们来讲讲vue中调api的两种常见方法。 由于vue2.0开始，对vue-resource不在维护更新。所以导致很多人开始入坑axios。 当我用起了axios，嗯，它是真的坑。最坑的是它不支持跨域。  如果你项目打包上线依旧需要跨域，我劝你就不要用axios了，会把自己坑死的。（这时候就可以用vue-resource） 但是如果只是在环境上测试，你可以使用proxyTable代理。 具体使">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/blog/2018/04/10/vue-axios与vue-resource/page5.jpg">
-<meta property="og:image" content="http://yoursite.com/blog/2018/04/10/vue-axios与vue-resource/page5_2.jpg">
+<meta property="og:image" content="https://lafitewu.github.io/blog/blog/2018/04/10/vue-axios与vue-resource/page5.jpg">
+<meta property="og:image" content="https://lafitewu.github.io/blog/blog/2018/04/10/vue-axios与vue-resource/page5_2.jpg">
 <meta property="og:updated_time" content="2018-07-06T14:57:39.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue - (axios与vue-resource)">
 <meta name="twitter:description" content="今天我们来讲讲vue中调api的两种常见方法。 由于vue2.0开始，对vue-resource不在维护更新。所以导致很多人开始入坑axios。 当我用起了axios，嗯，它是真的坑。最坑的是它不支持跨域。  如果你项目打包上线依旧需要跨域，我劝你就不要用axios了，会把自己坑死的。（这时候就可以用vue-resource） 但是如果只是在环境上测试，你可以使用proxyTable代理。 具体使">
-<meta name="twitter:image" content="http://yoursite.com/blog/2018/04/10/vue-axios与vue-resource/page5.jpg">
+<meta name="twitter:image" content="https://lafitewu.github.io/blog/blog/2018/04/10/vue-axios与vue-resource/page5.jpg">
   
     <link rel="alternative" href="/atom.xml" title="lafitewu" type="application/atom+xml">
   
@@ -198,10 +198,10 @@
     
     <!-- <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>今天我们来讲讲vue中调api的两种常见方法。</strong><br><img src="/blog/2018/04/10/vue-axios与vue-resource/page5.jpg" width="30%"></p>
+        <p><strong>今天我们来讲讲vue中调api的两种常见方法。</strong><br><img src="/blog/blog/2018/04/10/vue-axios与vue-resource/page5.jpg" width="30%"></p>
 <p>由于vue2.0开始，对vue-resource不在维护更新。所以导致很多人开始入坑axios。</p>
 <p>当我用起了axios，嗯，它是真的坑。最坑的是它<strong>不支持跨域</strong>。</p>
-<p><img src="/blog/2018/04/10/vue-axios与vue-resource/page5_2.jpg" width="30%"></p>
+<p><img src="/blog/blog/2018/04/10/vue-axios与vue-resource/page5_2.jpg" width="30%"></p>
 <p><strong>如果你项目打包上线依旧需要跨域，我劝你就不要用axios了，会把自己坑死的。（这时候就可以用vue-resource）</strong></p>
 <p>但是如果只是在环境上测试，你可以使用<code>proxyTable</code>代理。</p>
 <p>具体使用如下，<code>找到config文件夹中的index.js文件：</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">           &apos;/api&apos;:&#123;</span><br><span class="line">                target:&apos;https://api.douban.com&apos;,</span><br><span class="line">                changeOrigin:true,</span><br><span class="line">                pathRewrite:&#123;</span><br><span class="line">                    &apos;/api&apos;:&apos;&apos;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
@@ -253,10 +253,10 @@
         
     
     
-        <p><strong>今天我们来讲讲vue中调api的两种常见方法。</strong><br><img src="/blog/2018/04/10/vue-axios与vue-resource/page5.jpg" width="30%"></p>
+        <p><strong>今天我们来讲讲vue中调api的两种常见方法。</strong><br><img src="/blog/blog/2018/04/10/vue-axios与vue-resource/page5.jpg" width="30%"></p>
 <p>由于vue2.0开始，对vue-resource不在维护更新。所以导致很多人开始入坑axios。</p>
 <p>当我用起了axios，嗯，它是真的坑。最坑的是它<strong>不支持跨域</strong>。</p>
-<p><img src="/blog/2018/04/10/vue-axios与vue-resource/page5_2.jpg" width="30%"></p>
+<p><img src="/blog/blog/2018/04/10/vue-axios与vue-resource/page5_2.jpg" width="30%"></p>
 <p><strong>如果你项目打包上线依旧需要跨域，我劝你就不要用axios了，会把自己坑死的。（这时候就可以用vue-resource）</strong></p>
 <p>但是如果只是在环境上测试，你可以使用<code>proxyTable</code>代理。</p>
 <p>具体使用如下，<code>找到config文件夹中的index.js文件：</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxyTable: &#123;</span><br><span class="line">           &apos;/api&apos;:&#123;</span><br><span class="line">                target:&apos;https://api.douban.com&apos;,</span><br><span class="line">                changeOrigin:true,</span><br><span class="line">                pathRewrite:&#123;</span><br><span class="line">                    &apos;/api&apos;:&apos;&apos;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
@@ -353,7 +353,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/10/vue-axios与vue-resource/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lafitewu.github.io/blog/2018/04/10/vue-axios与vue-resource/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -528,15 +528,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">www</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -549,6 +545,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">

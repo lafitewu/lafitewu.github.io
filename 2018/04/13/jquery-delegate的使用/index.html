@@ -5,23 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="https://lafitewu.github.io/blog">
   <title>jquery - (delegate的使用) | lafitewu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="起因：以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。 所以：这就是为什么要用delegate绑定事件。 举个例子：我在class为demo的标签内的a 标签加了个点击事件，而点击事件里面执行的是把demo标签内，所有内容替换，同时也会重新插入a标签。 example：12345678910111213141516">
 <meta name="keywords" content="jquery">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jquery - (delegate的使用)">
-<meta property="og:url" content="http://yoursite.com/2018/04/13/jquery-delegate的使用/index.html">
+<meta property="og:url" content="https://lafitewu.github.io/blog/2018/04/13/jquery-delegate的使用/index.html">
 <meta property="og:site_name" content="lafitewu">
 <meta property="og:description" content="起因：以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。 所以：这就是为什么要用delegate绑定事件。 举个例子：我在class为demo的标签内的a 标签加了个点击事件，而点击事件里面执行的是把demo标签内，所有内容替换，同时也会重新插入a标签。 example：12345678910111213141516">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/blog/2018/04/13/jquery-delegate的使用/page2.jpg">
+<meta property="og:image" content="https://lafitewu.github.io/blog/blog/2018/04/13/jquery-delegate的使用/page2.jpg">
 <meta property="og:updated_time" content="2018-07-06T14:57:39.467Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jquery - (delegate的使用)">
 <meta name="twitter:description" content="起因：以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。 所以：这就是为什么要用delegate绑定事件。 举个例子：我在class为demo的标签内的a 标签加了个点击事件，而点击事件里面执行的是把demo标签内，所有内容替换，同时也会重新插入a标签。 example：12345678910111213141516">
-<meta name="twitter:image" content="http://yoursite.com/blog/2018/04/13/jquery-delegate的使用/page2.jpg">
+<meta name="twitter:image" content="https://lafitewu.github.io/blog/blog/2018/04/13/jquery-delegate的使用/page2.jpg">
   
     <link rel="alternative" href="/atom.xml" title="lafitewu" type="application/atom+xml">
   
@@ -197,7 +197,7 @@
     
     <!-- <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>起因：</strong>以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。<br><img src="/blog/2018/04/13/jquery-delegate的使用/page2.jpg" width="30%"></p>
+        <p><strong>起因：</strong>以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。<br><img src="/blog/blog/2018/04/13/jquery-delegate的使用/page2.jpg" width="30%"></p>
 <p><strong>所以：</strong>这就是为什么要用delegate绑定事件。</p>
 <p>举个例子：我在class为demo的标签内的a 标签加了个点击事件，而点击事件里面执行的是把demo标签内，所有内容替换，同时也会重新插入a标签。</p>
 <p><strong>example：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.app_infro_con&quot;).delegate(&quot;a&quot;,&quot;click&quot;,function() &#123;</span><br><span class="line">	//给class名为app_infro_con内的a 标签一个点击事件</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type:&quot;get&quot;,</span><br><span class="line">        url: Url,</span><br><span class="line">        dataType:&quot;jsonp&quot;,</span><br><span class="line">        async: true,</span><br><span class="line">        beforeSend:function(XMLHttpRequest)&#123; </span><br><span class="line">            $(&quot;.app_infro_con&quot;).html(&quot;img style=&apos;width: 100%;&apos; src=&apos;./images/loading.gif&apos;&quot;/);// app_infro_con内的内容，这时app_infro_con里面已经没有a标签了</span><br><span class="line">        &#125;, </span><br><span class="line">        success:function(res)&#123;</span><br><span class="line">            var infro = res.data.notice</span><br><span class="line">            $(&quot;.app_infro_con&quot;).html(infro);  // 这里的infro 是我外部定义的一个内容，里面是有a标签的，但是 如果用直接click去绑定，你会发现click只会触发一次,这是因为这里的a标签是新插入进来的。</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
@@ -236,7 +236,7 @@
         
     
     
-        <p><strong>起因：</strong>以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。<br><img src="/blog/2018/04/13/jquery-delegate的使用/page2.jpg" width="30%"></p>
+        <p><strong>起因：</strong>以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。<br><img src="/blog/blog/2018/04/13/jquery-delegate的使用/page2.jpg" width="30%"></p>
 <p><strong>所以：</strong>这就是为什么要用delegate绑定事件。</p>
 <p>举个例子：我在class为demo的标签内的a 标签加了个点击事件，而点击事件里面执行的是把demo标签内，所有内容替换，同时也会重新插入a标签。</p>
 <p><strong>example：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.app_infro_con&quot;).delegate(&quot;a&quot;,&quot;click&quot;,function() &#123;</span><br><span class="line">	//给class名为app_infro_con内的a 标签一个点击事件</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type:&quot;get&quot;,</span><br><span class="line">        url: Url,</span><br><span class="line">        dataType:&quot;jsonp&quot;,</span><br><span class="line">        async: true,</span><br><span class="line">        beforeSend:function(XMLHttpRequest)&#123; </span><br><span class="line">            $(&quot;.app_infro_con&quot;).html(&quot;img style=&apos;width: 100%;&apos; src=&apos;./images/loading.gif&apos;&quot;/);// app_infro_con内的内容，这时app_infro_con里面已经没有a标签了</span><br><span class="line">        &#125;, </span><br><span class="line">        success:function(res)&#123;</span><br><span class="line">            var infro = res.data.notice</span><br><span class="line">            $(&quot;.app_infro_con&quot;).html(infro);  // 这里的infro 是我外部定义的一个内容，里面是有a标签的，但是 如果用直接click去绑定，你会发现click只会触发一次,这是因为这里的a标签是新插入进来的。</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
@@ -320,7 +320,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/04/13/jquery-delegate的使用/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lafitewu.github.io/blog/2018/04/13/jquery-delegate的使用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -495,15 +495,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">www</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,6 +512,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">

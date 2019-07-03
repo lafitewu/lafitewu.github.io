@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="https://lafitewu.github.io/blog">
   <title>lafitewu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="吴丰池,吴丰池的博客,lafitewu">
 <meta name="keywords" content="吴丰池,吴丰池的博客,lafitewu">
 <meta property="og:type" content="website">
 <meta property="og:title" content="lafitewu">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="https://lafitewu.github.io/blog/index.html">
 <meta property="og:site_name" content="lafitewu">
 <meta property="og:description" content="吴丰池,吴丰池的博客,lafitewu">
 <meta property="og:locale" content="default">
@@ -202,7 +202,7 @@
 <h2 id="1-安装vue插件包"><a href="#1-安装vue插件包" class="headerlink" title="1.安装vue插件包"></a>1.安装vue插件包</h2><p><code>npm install --save xlsx file-saver</code></p>
 <h2 id="2-编写公用js函数"><a href="#2-编写公用js函数" class="headerlink" title="2.编写公用js函数"></a>2.编写公用js函数</h2><p><code>/publicFn/index.js</code> 代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import FileSaver from &apos;file-saver&apos;;</span><br><span class="line">import XLSX from &apos;xlsx&apos;;</span><br><span class="line">export default &#123;</span><br><span class="line">    // 导出Excel表格</span><br><span class="line">    exportExcel (name) &#123;</span><br><span class="line">        /* generate workbook object from table */</span><br><span class="line">        var wb = XLSX.utils.table_to_book(document.querySelector(&apos;#lafite_datas&apos;))</span><br><span class="line">        /* get binary string as output */</span><br><span class="line">        var wbout = XLSX.write(wb, &#123; bookType: &apos;xlsx&apos;, bookSST: true, type: &apos;array&apos; &#125;)</span><br><span class="line">        try &#123;</span><br><span class="line">            FileSaver.saveAs(new Blob([wbout], &#123; type: &apos;application/octet-stream&apos; &#125;), name)</span><br><span class="line">        &#125; catch (e) &#123; if (typeof console !== &apos;undefined&apos;) console.log(e, wbout) &#125;</span><br><span class="line">        return wbout</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>ps: <code>#lafite_datas</code> 可改成你自己的table中的id名,<code>name</code>是参数，通过调用的时候传过来的，它是文件的命名。</p>
-<h2 id="3-在main-js中引入"><a href="#3-在main-js中引入" class="headerlink" title="3.在main.js中引入"></a>3.在main.js中引入</h2><p>如图：<br><img src="/blog/2019/02/27/vue导出Excel/one.png" width="60%"></p>
+<h2 id="3-在main-js中引入"><a href="#3-在main-js中引入" class="headerlink" title="3.在main.js中引入"></a>3.在main.js中引入</h2><p>如图：<br><img src="/blog/blog/2019/02/27/vue导出Excel/one.png" width="60%"></p>
 <h2 id="4-调用"><a href="#4-调用" class="headerlink" title="4.调用"></a>4.调用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.publicFns.exportExcel(Name);</span><br></pre></td></tr></table></figure>
 
       
@@ -434,15 +434,15 @@
     
     <!-- <div class="article-entry" itemprop="articleBody">
       
-        <p>话不多说，先上图：<br><img src="/blog/2018/12/13/vue引入iconfont阿里矢量图库/ps.png" width="20%"></p>
+        <p>话不多说，先上图：<br><img src="/blog/blog/2018/12/13/vue引入iconfont阿里矢量图库/ps.png" width="20%"></p>
 <blockquote>
 <p>项目背景：vue element ui能用的icon实在有限，所以…一起从零到一吧。</p>
 </blockquote>
 <p><strong>1.进入阿里矢量图标库官网 </strong><br><a href="http://www.iconfont.cn" target="_blank">官网传送门</a><br>注册 =&gt; 登录   这里就省略了..</p>
-<p><strong>2.选择你需要的icon </strong><br>a.下载svg到本地<br>b.进入到”我的项目”,如下图：<br><img src="/blog/2018/12/13/vue引入iconfont阿里矢量图库/project.png" width="50%"><br>c.然后复制css地址在浏览器打开，复制里面代码，地址如图：<br><img src="/blog/2018/12/13/vue引入iconfont阿里矢量图库/link.png" width="50%"></p>
+<p><strong>2.选择你需要的icon </strong><br>a.下载svg到本地<br>b.进入到”我的项目”,如下图：<br><img src="/blog/blog/2018/12/13/vue引入iconfont阿里矢量图库/project.png" width="50%"><br>c.然后复制css地址在浏览器打开，复制里面代码，地址如图：<br><img src="/blog/blog/2018/12/13/vue引入iconfont阿里矢量图库/link.png" width="50%"></p>
 <p><strong>3.在vue项目静态文件夹中新建一个css文件，把上一步copy的代码ctrl+v进去 </strong><br><strong>4.最后在main.js中全局引入 </strong></p>
 <blockquote>
-<p>就可以全局开心的引入啦！！！如下图：<br><img src="/blog/2018/12/13/vue引入iconfont阿里矢量图库/icon.png" width="50%"></p>
+<p>就可以全局开心的引入啦！！！如下图：<br><img src="/blog/blog/2018/12/13/vue引入iconfont阿里矢量图库/icon.png" width="50%"></p>
 </blockquote>
 
       
@@ -465,7 +465,7 @@
             
             
                 
-                <p><p>话不多说，先上图：<br><img src="/blog/2018/12/13/vue引入iconfont阿里矢量图库/ps.png" width="20%"></p>
+                <p><p>话不多说，先上图：<br><img src="/blog/blog/2018/12/13/vue引入iconfont阿里矢量图库/ps.png" width="20%"></p>
 <blockquote>
 <p>
             
@@ -560,7 +560,7 @@
         <blockquote>
 <p>场景：如下图所示。<br><br>1.需要通过js动态插入script，因为广告可能会改，所以需要动态插入；<br><br>2.由于可以接多家广告，所以需要分配展示概率。</p>
 </blockquote>
-<p><img src="/blog/2018/11/01/随机动态插入js/ads.png" width="40%"></p>
+<p><img src="/blog/blog/2018/11/01/随机动态插入js/ads.png" width="40%"></p>
 <h2 id="动态插入js"><a href="#动态插入js" class="headerlink" title="动态插入js"></a>动态插入js</h2><p>这里只讲jquery的方法，<code>getScript()</code>，<br><br>例：$.getScript(“js/index.js”);<br><br><a href="http://www.w3school.com.cn/jquery/ajax_getscript.asp" target="_blank" rel="noopener">更多详情</a></p>
 <h2 id="随机函数封装"><a href="#随机函数封装" class="headerlink" title="随机函数封装"></a>随机函数封装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 封装随机函数</span><br><span class="line">randomFn(num) &#123;</span><br><span class="line">	// num:概率</span><br><span class="line">	var randomNum = Math.round(Math.random()*100);</span><br><span class="line">	console.log(randomNum);</span><br><span class="line">	console.log(num);</span><br><span class="line">	if(randomNum &lt; num) &#123;</span><br><span class="line">		return true</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		return false</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>完整逻辑如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if(that.randomFn(70)) &#123;</span><br><span class="line">	//70%</span><br><span class="line">	console.log(true);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">	//30%</span><br><span class="line">	console.log(false);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -1331,12 +1331,12 @@ $(&quot;.btn&quot;).click(function() {
 </blockquote>
 <p>注册地址：<a href="https://www.gearhost.com" target="_blank">gearhost传送门</a></p>
 <p>注册、登录我这里就不做详细的教程了。</p>
-<p>登录进入之后，如下图所示：<br><img src="/blog/2018/07/12/gearhost免费部署node/pic1.png" width="50%"></p>
-<p>然后选择代码上传方式,个人推荐本地git.如下图：<br><img src="/blog/2018/07/12/gearhost免费部署node/pic2.png" width="50%"></p>
+<p>登录进入之后，如下图所示：<br><img src="/blog/blog/2018/07/12/gearhost免费部署node/pic1.png" width="50%"></p>
+<p>然后选择代码上传方式,个人推荐本地git.如下图：<br><img src="/blog/blog/2018/07/12/gearhost免费部署node/pic2.png" width="50%"></p>
 <p>接下来的操作就是git的操作了，这里我也不做详细的说明了。</p>
-<p>给大家看下我node的文件列表。如下图：<br><img src="/blog/2018/07/12/gearhost免费部署node/pic3.png" width="50%"></p>
-<p>部署完之后，如下图：<br><img src="/blog/2018/07/12/gearhost免费部署node/pic4.png" width="50%"></p>
-<p>就可以看到node页面了。最后一张图：<br><img src="/blog/2018/07/12/gearhost免费部署node/pic5.png" width="50%"></p>
+<p>给大家看下我node的文件列表。如下图：<br><img src="/blog/blog/2018/07/12/gearhost免费部署node/pic3.png" width="50%"></p>
+<p>部署完之后，如下图：<br><img src="/blog/blog/2018/07/12/gearhost免费部署node/pic4.png" width="50%"></p>
+<p>就可以看到node页面了。最后一张图：<br><img src="/blog/blog/2018/07/12/gearhost免费部署node/pic5.png" width="50%"></p>
 <p>好，O xx K 大功告成！</p>
 
       
@@ -1539,15 +1539,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">www</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1560,6 +1556,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">

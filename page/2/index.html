@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="https://lafitewu.github.io/blog">
   <title>lafitewu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="吴丰池,吴丰池的博客,lafitewu">
 <meta name="keywords" content="吴丰池,吴丰池的博客,lafitewu">
 <meta property="og:type" content="website">
 <meta property="og:title" content="lafitewu">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:url" content="https://lafitewu.github.io/blog/page/2/index.html">
 <meta property="og:site_name" content="lafitewu">
 <meta property="og:description" content="吴丰池,吴丰池的博客,lafitewu">
 <meta property="og:locale" content="default">
@@ -199,8 +199,8 @@
         <blockquote>
 <p>需求场景：点击浏览器返回，回到主页时，展现指定的tab页。</p>
 </blockquote>
-<p>如下图：<br><img src="/blog/2018/06/25/cookie带状态返回/tab1.png" width="50%"></p>
-<p><img src="/blog/2018/06/25/cookie带状态返回/tab2.png" width="50%"></p>
+<p>如下图：<br><img src="/blog/blog/2018/06/25/cookie带状态返回/tab1.png" width="50%"></p>
+<p><img src="/blog/blog/2018/06/25/cookie带状态返回/tab2.png" width="50%"></p>
 <p>图中两个”点我”都会去到详情页面。但是点返回时，都会回到可参与的tab状态。<br>那么对于用户的体验是不太友好的。</p>
 <blockquote>
 <p>解决办法：由于每次点返回，其实主页都会刷新一遍。那么可以从这里下手。<br>思路方法1：记录最后一次tab的状态，并在跳转时，调用后台接口，将tab状态传给后台保存。返回时，由于页面刷新，调用接口，取出保存的tab状态。<br>思路方法2：和方法1的思路一致。但是存储的方法是，前端完成，无需联合后台，也可以减少请求数。就是使用cookie存储。</p>
@@ -325,7 +325,7 @@
 <p>我这里就不对session做详细的解释了，你如果要用它，想必也是知道它的用处的。</p>
 <p>首先是安装：<code>express-session</code></p>
 <p><code>npm install express-session</code></p>
-<p>可能npm提示安装成功了，保险点还是去<code>package.json</code>文件去看看，如：<br><img src="/blog/2018/06/08/node与session/depend.png" width="40%"></p>
+<p>可能npm提示安装成功了，保险点还是去<code>package.json</code>文件去看看，如：<br><img src="/blog/blog/2018/06/08/node与session/depend.png" width="40%"></p>
 <p>然后在<code>app.js</code>中引入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var session = require(&quot;express-session&quot;);  </span><br><span class="line">var NedbStore = require(&apos;nedb-session-store&apos;)( session );</span><br><span class="line">const sessionMiddleware = session(&#123;</span><br><span class="line">    secret: &quot;fas fas&quot;,</span><br><span class="line">    resave: false,</span><br><span class="line">    saveUninitialized: false,</span><br><span class="line">    cookie: &#123;</span><br><span class="line">      path: &apos;/&apos;,</span><br><span class="line">      httpOnly: true,</span><br><span class="line">      maxAge: 365 * 24 * 60 * 60 * 1000   // e.g. 1 year</span><br><span class="line">    &#125;,</span><br><span class="line">    store: new NedbStore(&#123;</span><br><span class="line">      filename: &apos;path_to_nedb_persistence_file.db&apos;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">app.use(sessionMiddleware);</span><br></pre></td></tr></table></figure></p>
 <p>这下就可以燥起来了。</p>
 
@@ -442,7 +442,7 @@
     <!-- <div class="article-entry" itemprop="articleBody">
       
         <p><em>最近用node做了一个简易后台系统，遇到了很多坑，拿出来分享分享。</em></p>
-<p>先上图，我们还是按套路出牌。<br><img src="/blog/2018/06/08/node与验证码/yzm.gif" width="40%"></p>
+<p>先上图，我们还是按套路出牌。<br><img src="/blog/blog/2018/06/08/node与验证码/yzm.gif" width="40%"></p>
 <blockquote>
 <p>因为long long ago也用php写过后台，php可以自己绘制验证码。所以马上百度一波。<br>然而发现node貌似没有类似的骚操作。</p>
 </blockquote>
@@ -472,7 +472,7 @@
             
                 
                 <p><p><em>最近用node做了一个简易后台系统，遇到了很多坑，拿出来分享分享。</em></p>
-<p>先上图，我们还是按套路出牌。<br><img src="/blog/2018/06/08/node与验证码/yzm.gif" width="40%"></p>
+<p>先上图，我们还是按套路出牌。<br><img src="/blog/blog/2018/06/08/node与验证码/yzm.gif" width="40%"></p>
 <p>
             
         
@@ -563,8 +563,8 @@
     
     <!-- <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="node中mysql的应用"><a href="#node中mysql的应用" class="headerlink" title="node中mysql的应用"></a>node中mysql的应用</h2><p>首先我们需要先在<code>pagejson.js</code>的依赖中加入<code>&quot;mysql&quot;: &quot;latest&quot;</code>,如图：<br><img src="/blog/2018/05/31/nodejs-引入mysql/node_pic2.png" width="40%"><br>然后npm install ，这样mysql就安装好了。</p>
-<p>这里为了后续项目操作数据库方便，就建立了一个连接数据库的公用模板。我们可以新建一个文件夹，我这里是db文件夹，<br>如下：<br><img src="/blog/2018/05/31/nodejs-引入mysql/node_index.png" width="40%"><br>db文件夹下有两个js,具体代码如下：</p>
+        <h2 id="node中mysql的应用"><a href="#node中mysql的应用" class="headerlink" title="node中mysql的应用"></a>node中mysql的应用</h2><p>首先我们需要先在<code>pagejson.js</code>的依赖中加入<code>&quot;mysql&quot;: &quot;latest&quot;</code>,如图：<br><img src="/blog/blog/2018/05/31/nodejs-引入mysql/node_pic2.png" width="40%"><br>然后npm install ，这样mysql就安装好了。</p>
+<p>这里为了后续项目操作数据库方便，就建立了一个连接数据库的公用模板。我们可以新建一个文件夹，我这里是db文件夹，<br>如下：<br><img src="/blog/blog/2018/05/31/nodejs-引入mysql/node_index.png" width="40%"><br>db文件夹下有两个js,具体代码如下：</p>
 <p><code>congfig.js:</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;  </span><br><span class="line">	mysql: &#123;   </span><br><span class="line">		host: &apos;127.0.0.1&apos;,     </span><br><span class="line">		user: &apos;root&apos;,   </span><br><span class="line">		password: &apos;123456&apos;,  </span><br><span class="line">		database:&apos;lafiteXXX&apos;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p><code>usersql.js:</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var UserSQL = &#123;  </span><br><span class="line">	insert:&apos;INSERT INTO user(id,name) VALUES(?,?)&apos;, </span><br><span class="line">	queryAll:&apos;SELECT * FROM user&apos;,  </span><br><span class="line">	getUserById:&apos;SELECT * FROM user WHERE id = ? &apos;,</span><br><span class="line">	getUserByName:&apos;SELECT * FROM user WHERE name = ? &apos;,</span><br><span class="line">&#125;;</span><br><span class="line">module.exports = UserSQL;</span><br></pre></td></tr></table></figure></p>
 <p>最后在routes文件夹中新建一个js或者直接在<code>users.js</code>中引入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">// 导入MySQL模块</span><br><span class="line">var mysql = require(&apos;mysql&apos;);</span><br><span class="line">var dbConfig = require(&apos;../db/config&apos;);</span><br><span class="line">var userSQL = require(&apos;../db/usersql&apos;);</span><br><span class="line"></span><br><span class="line">/* GET users listing. */</span><br><span class="line">router.get(&apos;/add&apos;, function(req, res, next) &#123;</span><br><span class="line">  res.send(&apos;respond with a resource&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// 使用DBConfig.js的配置信息创建一个MySQL连接池</span><br><span class="line">var pool = mysql.createPool( dbConfig.mysql );</span><br><span class="line"></span><br><span class="line">// 响应一个JSON数据</span><br><span class="line">var responseJSON = function (res, ret) &#123;</span><br><span class="line">     if(typeof ret === &apos;undefined&apos;) &#123; </span><br><span class="line">          res.json(&#123;</span><br><span class="line">          	code:&apos;-200&apos;,</span><br><span class="line">          	msg: &apos;操作失败&apos;   </span><br><span class="line">        &#125;); </span><br><span class="line">    &#125; else &#123; </span><br><span class="line">      res.json(ret); </span><br><span class="line">  	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">// 添加用户</span><br><span class="line">router.get(&apos;/addUser&apos;, function(req, res, next)&#123;</span><br><span class="line">	// 从连接池获取连接 </span><br><span class="line">	pool.getConnection(function(err, connection) &#123; </span><br><span class="line">		// 获取前台页面传过来的参数  </span><br><span class="line"> 		var param = req.query || req.params;   </span><br><span class="line">		// 建立连接 增加一个用户信息 </span><br><span class="line">		connection.query(userSQL.insert, [param.id,param.name], function(err, result) &#123;</span><br><span class="line">	        if(result) &#123;      </span><br><span class="line">	             result = &#123;   </span><br><span class="line">	                code: 200,   </span><br><span class="line">	                msg:&apos;增加成功&apos;</span><br><span class="line">	             &#125;;  </span><br><span class="line">	        &#125;      </span><br><span class="line">     		// 以json形式，把操作结果返回给前台页面     </span><br><span class="line">       		responseJSON(res, result);   </span><br><span class="line"></span><br><span class="line">     		// 释放连接  </span><br><span class="line">      		connection.release(); </span><br><span class="line">       &#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 添加用户</span><br><span class="line">router.get(&apos;/query&apos;, function(req, res, next)&#123;</span><br><span class="line">	// 从连接池获取连接 </span><br><span class="line">	pool.getConnection(function(err, connection) &#123; </span><br><span class="line">		// 获取前台页面传过来的参数  </span><br><span class="line"> 		var param = req.query || req.params;   </span><br><span class="line">		// 建立连接 增加一个用户信息 </span><br><span class="line">		connection.query(userSQL.getUserById, param.id, function(err, result) &#123;</span><br><span class="line">	        if(result) &#123;  </span><br><span class="line">	            result = &#123;   </span><br><span class="line">	                code: 200,   </span><br><span class="line">	                msg:&apos;请求成功&apos;,</span><br><span class="line">	                data: result</span><br><span class="line">	             &#125;;</span><br><span class="line">	        &#125;      </span><br><span class="line">     		// 以json形式，把操作结果返回给前台页面     </span><br><span class="line">       		responseJSON(res, result);   </span><br><span class="line"></span><br><span class="line">     		// 释放连接  </span><br><span class="line">      		connection.release(); </span><br><span class="line">       &#125;);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
@@ -590,8 +590,8 @@
             
             
                 
-                <p><h2 id="node中mysql的应用"><a href="#node中mysql的应用" class="headerlink" title="node中mysql的应用"></a>node中mysql的应用</h2><p>首先我们需要先在<code>pagejson.js</code>的依赖中加入<code>&quot;mysql&quot;: &quot;latest&quot;</code>,如图：<br><img src="/blog/2018/05/31/nodejs-引入mysql/node_pic2.png" width="40%"><br>然后npm install ，这样mysql就安装好了。</p>
-<p>这里为了后续项目操作数据库方便，就建立了一个连接数据库的公用模板。我们可以新建一个文件夹，我这里是db文件夹，<br>如下：<br><img src="/blog/2018/05/31/nodejs-引入mysql/node_index.png" width="40%"><br>db文件夹下有两个js,具体代码如下：</p>
+                <p><h2 id="node中mysql的应用"><a href="#node中mysql的应用" class="headerlink" title="node中mysql的应用"></a>node中mysql的应用</h2><p>首先我们需要先在<code>pagejson.js</code>的依赖中加入<code>&quot;mysql&quot;: &quot;latest&quot;</code>,如图：<br><img src="/blog/blog/2018/05/31/nodejs-引入mysql/node_pic2.png" width="40%"><br>然后npm install ，这样mysql就安装好了。</p>
+<p>这里为了后续项目操作数据库方便，就建立了一个连接数据库的公用模板。我们可以新建一个文件夹，我这里是db文件夹，<br>如下：<br><img src="/blog/blog/2018/05/31/nodejs-引入mysql/node_index.png" width="40%"><br>db文件夹下有两个js,具体代码如下：</p>
 <p>
             
         
@@ -688,7 +688,7 @@
 <li><code>npm install -g express</code>  全局安装</li>
 <li><code>npm install -g express-generator</code> 很重要，不然会提示“express命令找不到的”</li>
 <li><code>express -e microblog</code> 建立网站项目模板</li>
-<li><code>npm install -g  node-dev</code> 安装热加载node-dev,ps:可以在pagejson下修改node,为node-dev如下图：<br><img src="/blog/2018/05/31/nodejs-准备工作/node_pic1.png" width="40%"><br>这样npm start 就可以实现热加载了。</li>
+<li><code>npm install -g  node-dev</code> 安装热加载node-dev,ps:可以在pagejson下修改node,为node-dev如下图：<br><img src="/blog/blog/2018/05/31/nodejs-准备工作/node_pic1.png" width="40%"><br>这样npm start 就可以实现热加载了。</li>
 </ol>
 
       
@@ -807,7 +807,7 @@
 <p>远离了安逸，寻一场梦。</p>
 <p>兜转间，又是初夏。</p>
 <p>却不见三两好友，举杯，放肆。</p>
-<p><img src="/blog/2018/05/24/《小别离》/xiaobieli.jpg" width="30%"></p>
+<p><img src="/blog/blog/2018/05/24/《小别离》/xiaobieli.jpg" width="30%"></p>
 
       
 
@@ -1048,7 +1048,7 @@
     
     <!-- <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/blog/2018/04/19/《shoe-dog》-初读鞋狗/page1.jpg" width="30%"></p>
+        <p><img src="/blog/blog/2018/04/19/《shoe-dog》-初读鞋狗/page1.jpg" width="30%"></p>
 <h2 id="原文经典语录"><a href="#原文经典语录" class="headerlink" title="原文经典语录"></a>原文经典语录</h2><p>1.”敢于冒险，别让你的才能掩埋在这片平庸的土地上。” &nbsp; &nbsp; &nbsp;–2014年6月 斯坦福大学 &nbsp;-菲尔.奈特。</p>
 <p>2.雅典娜胜利神庙（Temple of Athena Nike） &nbsp; –这也就是Nike名字的由来，象征着胜利。</p>
 <p>3.”在驱车返回的路上，我都在思考自己的销售大获成功的原因。我认为我之所以没法销售百科全书，是因为自己打心底里瞧不起它。销售共同基金时表现也只是稍有改进，因为我没有投入热情。那为什么卖鞋会如此不同呢？那是因为我发现这不是在销售，而是我对跑步的信赖。” &nbsp; - p60</p>
@@ -1078,7 +1078,7 @@
             
             
                 
-                <p><p><img src="/blog/2018/04/19/《shoe-dog》-初读鞋狗/page1.jpg" width="30%"></p>
+                <p><p><img src="/blog/blog/2018/04/19/《shoe-dog》-初读鞋狗/page1.jpg" width="30%"></p>
 <h2 id="原文经典语录"><a href="#原文经典语录" class="headerlink" title="原文经典语录"></a>原文经典语录</h2><p>1.”敢于冒险，别让你的才能掩埋在这片平庸的土地上。” &nbsp; &nbsp; &nbsp;–2014年6月 斯坦福大学 &nbsp;-菲尔.奈特。</p>
 <p>
             
@@ -1170,7 +1170,7 @@
     
     <!-- <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>起因：</strong>以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。<br><img src="/blog/2018/04/13/jquery-delegate的使用/page2.jpg" width="30%"></p>
+        <p><strong>起因：</strong>以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。<br><img src="/blog/blog/2018/04/13/jquery-delegate的使用/page2.jpg" width="30%"></p>
 <p><strong>所以：</strong>这就是为什么要用delegate绑定事件。</p>
 <p>举个例子：我在class为demo的标签内的a 标签加了个点击事件，而点击事件里面执行的是把demo标签内，所有内容替换，同时也会重新插入a标签。</p>
 <p><strong>example：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.app_infro_con&quot;).delegate(&quot;a&quot;,&quot;click&quot;,function() &#123;</span><br><span class="line">	//给class名为app_infro_con内的a 标签一个点击事件</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type:&quot;get&quot;,</span><br><span class="line">        url: Url,</span><br><span class="line">        dataType:&quot;jsonp&quot;,</span><br><span class="line">        async: true,</span><br><span class="line">        beforeSend:function(XMLHttpRequest)&#123; </span><br><span class="line">            $(&quot;.app_infro_con&quot;).html(&quot;img style=&apos;width: 100%;&apos; src=&apos;./images/loading.gif&apos;&quot;/);// app_infro_con内的内容，这时app_infro_con里面已经没有a标签了</span><br><span class="line">        &#125;, </span><br><span class="line">        success:function(res)&#123;</span><br><span class="line">            var infro = res.data.notice</span><br><span class="line">            $(&quot;.app_infro_con&quot;).html(infro);  // 这里的infro 是我外部定义的一个内容，里面是有a标签的，但是 如果用直接click去绑定，你会发现click只会触发一次,这是因为这里的a标签是新插入进来的。</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
@@ -1196,7 +1196,7 @@
             
             
                 
-                <p><p><strong>起因：</strong>以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。<br><img src="/blog/2018/04/13/jquery-delegate的使用/page2.jpg" width="30%"></p>
+                <p><p><strong>起因：</strong>以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。<br><img src="/blog/blog/2018/04/13/jquery-delegate的使用/page2.jpg" width="30%"></p>
 <p><strong>所以：</strong>这就是为什么要用delegate绑定事件。</p>
 <p>
             
@@ -1288,7 +1288,7 @@
     
     <!-- <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>先上效果图</strong>：<br><img src="/blog/2018/04/13/js-ajax-loading加载/page3.gif" width="30%"><br>在上代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">   type:&quot;get&quot;,</span><br><span class="line">   url: Url,</span><br><span class="line">   dataType:&quot;jsonp&quot;,</span><br><span class="line">   async: true,</span><br><span class="line">   // 此方法就是加载完成前的动画方法</span><br><span class="line">   beforeSend:function(XMLHttpRequest)&#123; </span><br><span class="line">   　　$(&quot;.app_infro_con&quot;).html(&quot;img src=&apos;./images/loading.gif&apos;/&quot;);</span><br><span class="line">   &#125;, </span><br><span class="line">   success:function(res)&#123;</span><br><span class="line">   　　var infro = res.data.notice</span><br><span class="line">   　　$(&quot;.app_infro_con&quot;).html(infro);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+        <p><strong>先上效果图</strong>：<br><img src="/blog/blog/2018/04/13/js-ajax-loading加载/page3.gif" width="30%"><br>在上代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">   type:&quot;get&quot;,</span><br><span class="line">   url: Url,</span><br><span class="line">   dataType:&quot;jsonp&quot;,</span><br><span class="line">   async: true,</span><br><span class="line">   // 此方法就是加载完成前的动画方法</span><br><span class="line">   beforeSend:function(XMLHttpRequest)&#123; </span><br><span class="line">   　　$(&quot;.app_infro_con&quot;).html(&quot;img src=&apos;./images/loading.gif&apos;/&quot;);</span><br><span class="line">   &#125;, </span><br><span class="line">   success:function(res)&#123;</span><br><span class="line">   　　var infro = res.data.notice</span><br><span class="line">   　　$(&quot;.app_infro_con&quot;).html(infro);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>嗯，ok ,人狠话不多。</p>
 
       
@@ -1311,7 +1311,7 @@
             
             
                 
-                <p><p><strong>先上效果图</strong>：<br><img src="/blog/2018/04/13/js-ajax-loading加载/page3.gif" width="30%"><br>在上代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">   type:&quot;get&quot;,</span><br><span class="line">   url: Url,</span><br><span class="line">   dataType:&quot;jsonp&quot;,</span><br><span class="line">   async: true,</span><br><span class="line">   // 此方法就是加载完成前的动画方法</span><br><span class="line">   beforeSend:function(XMLHttpRequest)&#123; </span><br><span class="line">   　　$(&quot;.app_infro_con&quot;).html(&quot;img src=&apos;./images/loading.gif&apos;/&quot;);</span><br><span class="line">   &#125;, </span><br><span class="line">   success:function(res)&#123;</span><br><span class="line">   　　var infro = res.data.notice</span><br><span class="line">   　　$(&quot;.app_infro_con&quot;).html(infro);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+                <p><p><strong>先上效果图</strong>：<br><img src="/blog/blog/2018/04/13/js-ajax-loading加载/page3.gif" width="30%"><br>在上代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">   type:&quot;get&quot;,</span><br><span class="line">   url: Url,</span><br><span class="line">   dataType:&quot;jsonp&quot;,</span><br><span class="line">   async: true,</span><br><span class="line">   // 此方法就是加载完成前的动画方法</span><br><span class="line">   beforeSend:function(XMLHttpRequest)&#123; </span><br><span class="line">   　　$(&quot;.app_infro_con&quot;).html(&quot;img src=&apos;./images/loading.gif&apos;/&quot;);</span><br><span class="line">   &#125;, </span><br><span class="line">   success:function(res)&#123;</span><br><span class="line">   　　var infro = res.data.notice</span><br><span class="line">   　　$(&quot;.app_infro_con&quot;).html(infro);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>嗯，ok ,人狠话不多。</p>
 <p>
             
@@ -1491,15 +1491,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">www</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1512,6 +1508,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">

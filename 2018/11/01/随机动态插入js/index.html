@@ -5,23 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="https://lafitewu.github.io/blog">
   <title>随机动态插入js | lafitewu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="场景：如下图所示。1.需要通过js动态插入script，因为广告可能会改，所以需要动态插入；2.由于可以接多家广告，所以需要分配展示概率。   动态插入js这里只讲jquery的方法，getScript()，例：$.getScript(“js/index.js”);更多详情 随机函数封装123456789101112// 封装随机函数randomFn(num) &amp;#123;	// num:概率">
 <meta name="keywords" content="jquery">
 <meta property="og:type" content="article">
 <meta property="og:title" content="随机动态插入js">
-<meta property="og:url" content="http://yoursite.com/2018/11/01/随机动态插入js/index.html">
+<meta property="og:url" content="https://lafitewu.github.io/blog/2018/11/01/随机动态插入js/index.html">
 <meta property="og:site_name" content="lafitewu">
 <meta property="og:description" content="场景：如下图所示。1.需要通过js动态插入script，因为广告可能会改，所以需要动态插入；2.由于可以接多家广告，所以需要分配展示概率。   动态插入js这里只讲jquery的方法，getScript()，例：$.getScript(“js/index.js”);更多详情 随机函数封装123456789101112// 封装随机函数randomFn(num) &amp;#123;	// num:概率">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/blog/2018/11/01/随机动态插入js/ads.png">
+<meta property="og:image" content="https://lafitewu.github.io/blog/blog/2018/11/01/随机动态插入js/ads.png">
 <meta property="og:updated_time" content="2019-02-09T05:49:13.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随机动态插入js">
 <meta name="twitter:description" content="场景：如下图所示。1.需要通过js动态插入script，因为广告可能会改，所以需要动态插入；2.由于可以接多家广告，所以需要分配展示概率。   动态插入js这里只讲jquery的方法，getScript()，例：$.getScript(“js/index.js”);更多详情 随机函数封装123456789101112// 封装随机函数randomFn(num) &amp;#123;	// num:概率">
-<meta name="twitter:image" content="http://yoursite.com/blog/2018/11/01/随机动态插入js/ads.png">
+<meta name="twitter:image" content="https://lafitewu.github.io/blog/blog/2018/11/01/随机动态插入js/ads.png">
   
     <link rel="alternative" href="/atom.xml" title="lafitewu" type="application/atom+xml">
   
@@ -200,7 +200,7 @@
         <blockquote>
 <p>场景：如下图所示。<br><br>1.需要通过js动态插入script，因为广告可能会改，所以需要动态插入；<br><br>2.由于可以接多家广告，所以需要分配展示概率。</p>
 </blockquote>
-<p><img src="/blog/2018/11/01/随机动态插入js/ads.png" width="40%"></p>
+<p><img src="/blog/blog/2018/11/01/随机动态插入js/ads.png" width="40%"></p>
 <h2 id="动态插入js"><a href="#动态插入js" class="headerlink" title="动态插入js"></a>动态插入js</h2><p>这里只讲jquery的方法，<code>getScript()</code>，<br><br>例：$.getScript(“js/index.js”);<br><br><a href="http://www.w3school.com.cn/jquery/ajax_getscript.asp" target="_blank" rel="noopener">更多详情</a></p>
 <h2 id="随机函数封装"><a href="#随机函数封装" class="headerlink" title="随机函数封装"></a>随机函数封装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 封装随机函数</span><br><span class="line">randomFn(num) &#123;</span><br><span class="line">	// num:概率</span><br><span class="line">	var randomNum = Math.round(Math.random()*100);</span><br><span class="line">	console.log(randomNum);</span><br><span class="line">	console.log(num);</span><br><span class="line">	if(randomNum &lt; num) &#123;</span><br><span class="line">		return true</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		return false</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>完整逻辑如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if(that.randomFn(70)) &#123;</span><br><span class="line">	//70%</span><br><span class="line">	console.log(true);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">	//30%</span><br><span class="line">	console.log(false);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -241,7 +241,7 @@
         <blockquote>
 <p>场景：如下图所示。<br><br>1.需要通过js动态插入script，因为广告可能会改，所以需要动态插入；<br><br>2.由于可以接多家广告，所以需要分配展示概率。</p>
 </blockquote>
-<p><img src="/blog/2018/11/01/随机动态插入js/ads.png" width="40%"></p>
+<p><img src="/blog/blog/2018/11/01/随机动态插入js/ads.png" width="40%"></p>
 <h2 id="动态插入js"><a href="#动态插入js" class="headerlink" title="动态插入js"></a>动态插入js</h2><p>这里只讲jquery的方法，<code>getScript()</code>，<br><br>例：$.getScript(“js/index.js”);<br><br><a href="http://www.w3school.com.cn/jquery/ajax_getscript.asp" target="_blank" rel="noopener">更多详情</a></p>
 <h2 id="随机函数封装"><a href="#随机函数封装" class="headerlink" title="随机函数封装"></a>随机函数封装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 封装随机函数</span><br><span class="line">randomFn(num) &#123;</span><br><span class="line">	// num:概率</span><br><span class="line">	var randomNum = Math.round(Math.random()*100);</span><br><span class="line">	console.log(randomNum);</span><br><span class="line">	console.log(num);</span><br><span class="line">	if(randomNum &lt; num) &#123;</span><br><span class="line">		return true</span><br><span class="line">	&#125;else &#123;</span><br><span class="line">		return false</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>完整逻辑如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if(that.randomFn(70)) &#123;</span><br><span class="line">	//70%</span><br><span class="line">	console.log(true);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">	//30%</span><br><span class="line">	console.log(false);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -324,7 +324,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/01/随机动态插入js/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://lafitewu.github.io/blog/2018/11/01/随机动态插入js/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -499,15 +499,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">www</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jq</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,6 +516,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
