@@ -176,6 +176,430 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-three-js-入门三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/26/three-js-入门三/">three.js - (入门三)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/26/three-js-入门三/" class="archive-article-date">
+  	<time datetime="2017-12-26T08:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-26</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>前面两节讲得都是在舞台上创建角色，这一节我们就让角色动起来。</p>
+<p>three.js 中一般是用requestAnimationFrame();来做动画，当然也可以用setInterval定时器，这里不建议使用。</p>
+<p>因为动画的核心就只有这个函数，然后如何做成何种动画，就靠自己去构思，去尝试了。</p>
+<p>话不多说，上代码：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE html</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html </span><span style="color: #ff0000;">lang</span><span style="color: #0000ff;">=”en”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">charset</span><span style="color: #0000ff;">=”UTF-8”</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>three.js<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">script </span><span style="color: #ff0000;">src</span><span style="color: #0000ff;">=”js/three.js”</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span><br>        <span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 创建场景</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> scene </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.Scene();<br><br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 创建相机  90 -&gt; 视角；相机拍摄面 -&gt; 一般为长宽比；0.1 -&gt; 近裁剪面； 1000 -&gt; 远裁剪面</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> camera </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.PerspectiveCamera(</span><span style="background-color: #f5f5f5; color: #000000;">90</span><span style="background-color: #f5f5f5; color: #000000;">, window.innerWidth</span><span style="background-color: #f5f5f5; color: #000000;">/</span><span style="background-color: #f5f5f5; color: #000000;">window.innerHeight, 0.1, 1000);</span><br><br>        <span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 渲染器</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> renderer </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.WebGLRenderer();<br>        renderer.setSize(window.innerWidth, window.innerHeight);<br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 设置背景颜色</span><br><span style="background-color: #f5f5f5; color: #000000;">        renderer.setClearColor(</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">#5AC7FF</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">);<br>        document.body.appendChild(renderer.domElement);<br><br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 创建物体   CubeGeometry 代表立体图形 1,3,2 分别代表长宽高</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> geometry </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.CubeGeometry(</span><span style="background-color: #f5f5f5; color: #000000;">1</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">3</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">2</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">2</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">2</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">5</span><span style="background-color: #f5f5f5; color: #000000;">);<br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;">网孔基础材料（MeshBasicMaterial）为其填充颜色</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> material </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.MeshBasicMaterial({color: </span><span style="background-color: #f5f5f5; color: #000000;">“</span><span style="background-color: #f5f5f5; color: #000000;">#990033</span><span style="background-color: #f5f5f5; color: #000000;">“</span><span style="background-color: #f5f5f5; color: #000000;">});<br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;">网孔(Mesh)：网孔是用来承载几何模型的一个对象，还可以把材料应用到它上面</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> cube </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.Mesh(geometry, material);<br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;">将物体添加到场景</span><br><span style="background-color: #f5f5f5; color: #000000;">        scene.add(cube);<br>        camera.position.z </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #000000;">5</span><span style="background-color: #f5f5f5; color: #000000;">;<br>        renderer.render(scene, camera);<br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;">渲染循环（render loop）</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">function</span><span style="background-color: #f5f5f5; color: #000000;"> render() {<br>            </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> requestAnimationFrame 相当于setInterval </span><br><span style="background-color: #f5f5f5; color: #000000;">            requestAnimationFrame(render);<br>            </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> cube.rotation.x += 0.1;</span><br><span style="background-color: #f5f5f5; color: #000000;">            cube.rotation.y </span><span style="background-color: #f5f5f5; color: #000000;">+=</span> <span style="background-color: #f5f5f5; color: #000000;">0.05</span><span style="background-color: #f5f5f5; color: #000000;">;<br>            </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> cube.rotation.z += 0.1;</span><br><span style="background-color: #f5f5f5; color: #000000;">            renderer.render(scene, camera);<br>        }<br>        render();<br>    </span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span></pre><br></div>
+
+<p>这样，就可以在屏幕中间，看到一个自转的立方体。</p>
+<p>说起自转，下节就讲讲如何在屏幕中间，做一个自转的地球。</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>前面两节讲得都是在舞台上创建角色，这一节我们就让角色动起来。</p>
+<p>three.js 中一般是用requestAnimationFrame();来做动画，当然也可以用setInterval定时器，这里不建议使用。</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2017/12/26/three-js-入门三/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/26/three-js-入门三/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-three-js-入门二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/16/three-js-入门二/">three.js - (入门二)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/16/three-js-入门二/" class="archive-article-date">
+  	<time datetime="2017-12-16T07:40:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-16</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>上一章节讲了如何完整的创建一个three.js的简单例子，这一节，分别细说每个必要元素的类别及功能。</p>
+<p>讲在前面的话：这一节主要是细说类别。那么我希望大家多去尝试每个功能，就像刚买了新手机一样，每个新鲜的功能都去试一下，</p>
+<p>这样自己才能深刻得体会到，这个代码原来是这个效果，这个功能原来是这个代码实现的。让我们进入正题：</p>
+<p>1.renderer(渲染器),用法及参数如下：</p>
+<p>renderer=new THREE.WebGLRenderer({<br>      　　antialias:true,//antialias:true/false是否开启反锯齿<br>      　　precision:”highp”,//precision:highp/mediump/lowp着色精度选择<br>      　　alpha:true,//alpha:true/false是否可以设置背景色透明<br>      　　premultipliedAlpha:false,//?<br>      　　stencil:false,//?<br>      　　preserveDrawingBuffer:true,//preserveDrawingBuffer:true/false是否保存绘图缓冲<br>      　　maxLights:1//maxLights:最大灯光数<br>})</p>
+<p>2.camera（相机）</p>
+<p>　　a.正投影相机：THREE.OrthographicCamera(left, right, top, bottom, near, far) （远近高低比例都相同）</p>
+<p>　　b.透视投影相机：THREE.PerspectiveCamera(fov, aspect, near, far) （远处的物体比近处的物体小）</p>
+<p>　　fov相当于视角，当它为0的时候，相当于闭着眼。这里取值多为45左右，当然也可以自己设不同的值试一试效果；</p>
+<p>　　near：可以认为是眼睛距离近处的距离；</p>
+<p>　　far：表示你远处的裁面；</p>
+<p>　　aspect：实际窗口的纵横比，即宽度除以高度</p>
+<p>3.light（光源）</p>
+<p>　　a.环境光THREE.AmbientLight(hex) &nbsp; // hex:16进制的颜色值</p>
+<p>　　什么是环境光？</p>
+<p>　　环境光是经过多次反射而来的光称为环境光，无法确定其最初的方向。环境光是一种无处不在的光。环境光源放出的光线被认为来自任何方向。</p>
+<p>　　因此，当你仅为场景指定环境光时，所有的物体无论法向量如何，都将表现为同样的明暗程度。（这是因为，反射光可以从各个方向进入您的眼睛）</p>
+<p>&nbsp;</p>
+<p>　　b.点光源：PointLight( color, intensity, distance ) &nbsp;</p>
+<p>　　Color：光的颜色;</p>
+<p>　　Intensity：光的强度;</p>
+<p>　　distance：光的距离</p>
+<p>&nbsp;</p>
+<p>　　c.聚光灯：THREE.SpotLight( hex, intensity, distance, angle, exponent )</p>
+<p>　　Angle：聚光灯着色的角度;</p>
+<p>　　exponent：光源模型中，衰减的一个参数，越大衰减约快</p>
+<p>&nbsp;</p>
+<p>　　d.平行光：THREE.DirectionalLight = function ( hex, intensity )</p>
+<p>4.geometry（各种形状）</p>
+<p>　　a.长方体：THREE.CubeGeometry(width, height, depth, widthSegments, heightSegments, depthSegments);</p>
+<p>　　b.平面：THREE.PlaneGeometry(width, height, widthSegments, heightSegments);</p>
+<p>　　c.球体：THREE.SphereGeometry(radius, segmentsWidth, segmentsHeight, phiStart, phiLength, thetaStart, thetaLength);</p>
+<p>_　　_d.圆形：THREE.CircleGeometry(radius, segments, thetaStart, thetaLength);</p>
+<p>　　e.圆柱体：THREE.CylinderGeometry(radiusTop, radiusBottom, height,radiusSegments, heightSegments, openEnded) &nbsp;//ps:当openEnded -&gt; 为 true时，上下不封口。</p>
+<p>　　f.正四面体：THREE.TetrahedronGeometry(radius, detail);</p>
+<p>　　g.正八面体：THREE.OctahedronGeometry(radius, detail);</p>
+<p>　　h.正十二面体：THREE.IcosahedronGeometry(radius, detail);</p>
+<p>　　i.圆环：THREE.TorusGeometry(radius, tube, radialSegments, tubularSegments, arc);</p>
+<p>　　j.圆环结：THREE.TorusKnotGeometry(radius, tube, radialSegments, tubularSegments, p, q, heightScale);</p>
+<p>5.material（材质）</p>
+<p>　　a.基本材质：THREE.MeshBasicMaterial（opt）</p>
+<p>　　opt对象参数：</p>
+<p>　　visible ：是否可见，默认为 true</p>
+<p>　　side ：渲染面片正面或是反面，默认为正面 THREE.FrontSide ，可设置为反面THREE.BackSide ，或双面 THREE.DoubleSide</p>
+<p>　　wireframe ：是否渲染线而非面，默认为 false</p>
+<p>　　color ：十六进制 RGB 颜色</p>
+<p>　　map ：使用纹理贴图</p>
+<p>&nbsp;</p>
+<p>　　b.Lambert 材质（MeshLambertMaterial）</p>
+<p>　　opt参数：</p>
+<p>　　color：设置材质颜色</p>
+<p>　　ambient 表示对环境光的反射能力，只有当设置了 AmbientLight 后，该值才是有效的</p>
+<p>　　emissive 是材质的自发光颜色，可以用来表现光源的颜色</p>
+<p>&nbsp;</p>
+<p>　　c.Phong 材质（MeshPhongMaterial）</p>
+<p>　　opt参数：</p>
+<p>　　color,ambient,emissive: 同上;</p>
+<p>　　specular: 镜面反射系数作说明</p>
+<p>　　shininess: 当 shininess 值越大时，高光的光斑越小，默认值为 30</p>
+<p>&nbsp;</p>
+<p>介绍到这里，大致的一些属性及种类就介绍到这里了。希望大家最好能一一尝试，这样看是看不出什么的，实际有什么不同的，当尝试之后，会茅塞顿开。</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>上一章节讲了如何完整的创建一个three.js的简单例子，这一节，分别细说每个必要元素的类别及功能。</p>
+<p>讲在前面的话：这一节主要是细说类别。那么我希望大家多去尝试每个功能，就像刚买了新手机一样，每个新鲜的功能都去试一下，</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2017/12/16/three-js-入门二/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/16/three-js-入门二/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-three-js-入门一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/14/three-js-入门一/">three.js - (入门一)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/12/14/three-js-入门一/" class="archive-article-date">
+  	<time datetime="2017-12-14T08:13:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-14</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <p>什么是three.js？它有什么用？这里我就不做详细的介绍了，毕竟百度很强大。</p>
+<p>作为程序员，先把思路想好，在开始敲代码是很重要的（个人愚见）。</p>
+<p>大概思路如下：</p>
+<p>1.场景（scene）； &nbsp;// three中所有元素都应该放在它里面，相当于一个舞台，所有的东西都应该在舞台上呈现。</p>
+<p>2.相机（camera）；// three中的相机其实就是人们看上面scene（舞台）的视角，就比如看舞台，因为位置不同，也就有不同的视角。</p>
+<p>3.渲染器（renderer）；// three中的渲染器，就相当于这个舞台的大小及颜色，没有这个设置，这个舞台是没有用的。</p>
+<p>4.物体（geometry）；// three中的物体，就相当于舞台上的演员，没有演员，那我们就只能看到舞台的背景及大小。</p>
+<p>5.网孔（Mesh）； // three中的网孔，就跟这个舞台是所有其他元素（相机、渲染器等等）的载体，而网孔就是物体及物体的其他特征（颜色等特征）的载体。</p>
+<p>这是创建最基本的5个步骤，缺一不可。</p>
+<p>不说废话上代码：</p>
+<div class="cnblogs_code"><br><pre><span style="color: #0000ff;">&lt;!</span><span style="color: #ff00ff;">DOCTYPE html</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">html </span><span style="color: #ff0000;">lang</span><span style="color: #0000ff;">=”en”</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">meta </span><span style="color: #ff0000;">charset</span><span style="color: #0000ff;">=”UTF-8”</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span>three.js 第一个demo<span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">title</span><span style="color: #0000ff;">&gt;</span><br>    <span style="color: #0000ff;">&lt;</span><span style="color: #800000;">script </span><span style="color: #ff0000;">src</span><span style="color: #0000ff;">=”js/three.js”</span><span style="color: #0000ff;">&gt;&lt;/</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">head</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">body</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">html</span><span style="color: #0000ff;">&gt;</span><br><span style="color: #0000ff;">&lt;</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span><br>        <span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 创建场景</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> scene </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.Scene();<br><br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 创建相机  90 -&gt; 视角；相机拍摄面 -&gt; 一般为长宽比；0.1 -&gt; 近裁剪面； 1000 -&gt; 远裁剪面</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> camera </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.PerspectiveCamera(</span><span style="background-color: #f5f5f5; color: #000000;">90</span><span style="background-color: #f5f5f5; color: #000000;">, window.innerWidth</span><span style="background-color: #f5f5f5; color: #000000;">/</span><span style="background-color: #f5f5f5; color: #000000;">window.innerHeight, 0.1, 1000);</span><br><br>        <span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 渲染器</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> renderer </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.WebGLRenderer();<br>        renderer.setSize(window.innerWidth, window.innerHeight);<br><br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 设置背景颜色</span><br><span style="background-color: #f5f5f5; color: #000000;">        renderer.setClearColor(</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">#5AC7FF</span><span style="background-color: #f5f5f5; color: #000000;">‘</span><span style="background-color: #f5f5f5; color: #000000;">);<br>        document.body.appendChild(renderer.domElement);<br><br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;"> 创建物体   CubeGeometry 代表立体图形 1,3,2 分别代表长宽高</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> geometry </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.CubeGeometry(</span><span style="background-color: #f5f5f5; color: #000000;">1</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">3</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">2</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">2</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">2</span><span style="background-color: #f5f5f5; color: #000000;">,</span><span style="background-color: #f5f5f5; color: #000000;">5</span><span style="background-color: #f5f5f5; color: #000000;">);<br><br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;">网孔基础材料（MeshBasicMaterial）为其填充颜色</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> material </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.MeshBasicMaterial({color: </span><span style="background-color: #f5f5f5; color: #000000;">“</span><span style="background-color: #f5f5f5; color: #000000;">#990033</span><span style="background-color: #f5f5f5; color: #000000;">“</span><span style="background-color: #f5f5f5; color: #000000;">});<br><br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;">网孔(Mesh)：网孔是用来承载几何模型的一个对象，还可以把材料应用到它上面</span><br>        <span style="background-color: #f5f5f5; color: #0000ff;">var</span><span style="background-color: #f5f5f5; color: #000000;"> cube </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #0000ff;">new</span><span style="background-color: #f5f5f5; color: #000000;"> THREE.Mesh(geometry, material);<br>        </span><span style="background-color: #f5f5f5; color: #008000;">//</span><span style="background-color: #f5f5f5; color: #008000;">将物体添加到场景</span><br><span style="background-color: #f5f5f5; color: #000000;">        scene.add(cube);<br><br>        camera.position.z </span><span style="background-color: #f5f5f5; color: #000000;">=</span> <span style="background-color: #f5f5f5; color: #000000;">5</span><span style="background-color: #f5f5f5; color: #000000;">;<br><br>        renderer.render(scene, camera);<br>    </span><span style="color: #0000ff;">&lt;/</span><span style="color: #800000;">script</span><span style="color: #0000ff;">&gt;</span></pre><br></div>
+
+<p>这段代码的效果图如下：</p>
+<p><img src="http://images2017.cnblogs.com/blog/1298851/201712/1298851-20171214161047951-1937125052.png" alt=""></p>
+<p>简单的入门今天就到这儿了，要想了解更多请看下回分解。</p>
+<p>&nbsp;</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><p>什么是three.js？它有什么用？这里我就不做详细的介绍了，毕竟百度很强大。</p>
+<p>作为程序员，先把思路想好，在开始敲代码是很重要的（个人愚见）。</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2017/12/14/three-js-入门一/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/12/14/three-js-入门一/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-html-自适应" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -407,19 +831,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jq</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -452,6 +876,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">诗</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
             
             <div class="clearfix"></div>
@@ -503,11 +931,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="https://desktop.lafitewu.site/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>桌面个人网站</a>
+              <a href="http://www.17sucai.com/preview/703246/2018-01-22/lafitewu.rar/index.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>桌面个人网站</a>
             </li>
           
             <li class="search-li">
-              <a href="http://3dhouse.lafitewu.site/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>3D九宫格</a>
+              <a href="http://www.17sucai.com/preview/703246/2018-01-09/demo11/index.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>3D九宫格</a>
             </li>
           
             <li class="search-li">
@@ -524,6 +952,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="http://lafitewu.gearhostpreview.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>英文特效官网</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://www.17sucai.com/preview/703246/2019-05-31/layuiAdminRed/index.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>layui管理后台</a>
             </li>
           
         </ul>

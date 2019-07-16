@@ -176,6 +176,410 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-H5点击复制到粘贴板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/20/H5点击复制到粘贴板/">H5点击复制到粘贴板</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/20/H5点击复制到粘贴板/" class="archive-article-date">
+  	<time datetime="2018-08-20T00:50:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-20</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="功能场景"><a href="#功能场景" class="headerlink" title="功能场景"></a>功能场景</h2><p>h5页面需要点击复制内容，到手机的粘贴板。</p>
+<h2 id="运用插件clipboard"><a href="#运用插件clipboard" class="headerlink" title="运用插件clipboard"></a>运用插件clipboard</h2><p>插件下载地址：<a href="https://clipboardjs.com/" target="_blank">clipboard官网</a></p>
+<h2 id="插件使用"><a href="#插件使用" class="headerlink" title="插件使用"></a>插件使用</h2><pre><code>//html部分
+&lt;div class=&quot;btn&quot;&gt;点我复制&lt;/div&gt;
+&lt;input id=&quot;title1&quot; type=&quot;text&quot; value=&quot;复制功能测试&quot; readonly=&quot;readonly&quot; /&gt;
+
+//js部分
+function copymsg() {
+    var Url2 = document.getElementById(&quot;title1&quot;);//要复制文字的节点
+    if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {//区分iPhone设备
+        window.getSelection().removeAllRanges();//这段代码必须放在前面否则无效
+        var range = document.createRange();
+        // 选中需要复制的节点
+        range.selectNode(Url2);
+        // 执行选中元素
+        window.getSelection().addRange(range);
+        // 执行 copy 操作
+        var successful = document.execCommand(&apos;copy&apos;);
+
+        // 移除选中的元素
+        window.getSelection().removeAllRanges();
+    } else {
+        Url2.select(); // 选择对象
+        document.execCommand(&quot;Copy&quot;); // 执行浏览器复制命令
+    }
+}
+$(&quot;.btn&quot;).click(function() {
+        copymsg();
+});
+</code></pre><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>这里的input可以换成div但是写法会有所区别，详细见官网介绍。<br>个人建议用input，因为这个兼容性最好。还有input标签内容不能opacity:0,也不能display:none;它必须在页面中显示。<br>我的做法是，让它字体颜色、input背景颜色都与页面背景色一致。这样就能解决这个兼容问题了。</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><h2 id="功能场景"><a href="#功能场景" class="headerlink" title="功能场景"></a>功能场景</h2><p>h5页面需要点击复制内容，到手机的粘贴板。</p>
+<h2 id="运用插件clipboard"><a href="#运用插件clipboard" class="headerlink" title="运用插件clipboard"></a>运用插件clipboard</h2><p>插件下载地址：<a href="https://clipboardjs.com/" target="_blank">clipboard官网</a></p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/08/20/H5点击复制到粘贴板/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/20/H5点击复制到粘贴板/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-填坑备忘录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/填坑备忘录/">填坑备忘录</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/填坑备忘录/" class="archive-article-date">
+  	<time datetime="2018-07-30T01:41:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>以下内容是一些实际项目中遇到的很小的点，但却有很大帮助的代码。</p>
+</blockquote>
+<h2 id="1-vue-element-ui中table"><a href="#1-vue-element-ui中table" class="headerlink" title="1.vue+element ui中table"></a>1.vue+element ui中table</h2><p>场景：table某个单元格内容太多，导致table行高不一致，页面不好看。<br>解决办法： <code>&lt;el-table-column :show-overflow-tooltip=&quot;true&quot; prop=&quot;resource&quot; label=&quot;文章来源&quot;&gt;</code><br>关键代码：<code>:show-overflow-tooltip=&quot;true&quot;</code></p>
+<h2 id="2-微信小程序input调起手机键盘问题"><a href="#2-微信小程序input调起手机键盘问题" class="headerlink" title="2.微信小程序input调起手机键盘问题"></a>2.微信小程序input调起手机键盘问题</h2><p>场景：小程序中自定义弹窗，并且弹窗中含有input,当用户触发input时，会导致手机自带虚拟键盘遮住input输入框。<br>解决办法：<code>&lt;input class=&#39;cover_input&#39; type=&#39;text&#39; value=&#39;&#39; cursor-spacing=&#39;80&#39;&gt;&lt;/input&gt;</code><br>关键代码：<code>cursor-spacing=&#39;80&#39;</code></p>
+<h2 id="3-table圆角"><a href="#3-table圆角" class="headerlink" title="3.table圆角"></a>3.table圆角</h2><p>场景：表格实现圆角，当整个表格颜色一致时，可以用border-radius属性，但现在需要table首行背景色不一致。<br>解决办法：加上一个<code>overflow: hidden</code>属性就可以了<br>关键代码：<code>overflow: hidden</code></p>
+<h2 id="4-pointer-events禁止点击"><a href="#4-pointer-events禁止点击" class="headerlink" title="4.pointer-events禁止点击"></a>4.pointer-events禁止点击</h2><p>场景：想禁止部分$(“.rr”)元素click的点击事件。<br>解决办法：可以通过js动态给css加上一个<code>pointer-events:none</code>属性就可以了<br>关键代码：<code>pointer-events:none</code></p>
+<blockquote>
+<p>2018.10.23更新</p>
+</blockquote>
+<h2 id="5-element-table-自定义行高"><a href="#5-element-table-自定义行高" class="headerlink" title="5.element table 自定义行高"></a>5.element table 自定义行高</h2><p>场景：element table 中的行高固定修改不了，<code>row-style=&quot;height:60px&quot;</code> . 加上这个row-style属性就可以自由改变行高了。</p>
+<h2 id="6-vue-获取当前链接的参数"><a href="#6-vue-获取当前链接的参数" class="headerlink" title="6.vue 获取当前链接的参数"></a>6.vue 获取当前链接的参数</h2><p>场景：vue项目中需要获取当前地址的参数，来做判断。<code>this.$route.query.type</code>.这是取到type参数。关键词<code>this.$route.query</code> </p>
+<h2 id="7-vue在methods中调用公共函数"><a href="#7-vue在methods中调用公共函数" class="headerlink" title="7.vue在methods中调用公共函数"></a>7.vue在methods中调用公共函数</h2><p>场景：methods中有大量耦合代码，可提炼出来。但按常规思路无法引用。<code>this.$options.methods.test()</code> =&gt; 调用test()函数.</p>
+<blockquote>
+<p>2018.11.19更新</p>
+</blockquote>
+<h2 id="8-vue下拉菜单‘归零’"><a href="#8-vue下拉菜单‘归零’" class="headerlink" title="8.vue下拉菜单‘归零’"></a>8.vue下拉菜单‘归零’</h2><p>场景：el-select下拉菜单标签，默认是不能清除选项的，但我这边想清除为原始状态，怎么办呢？<code>clearable</code>,加上这个属性就可以了。</p>
+<h2 id="9-vue不同子页面样式混乱"><a href="#9-vue不同子页面样式混乱" class="headerlink" title="9.vue不同子页面样式混乱"></a>9.vue不同子页面样式混乱</h2><p>场景：由于子菜单页面可能有同样的class名，但是各个页面的class样式却不一致，来回切换子页面的时候，就会导致页面样式混乱。<br>解决办法：在style中加上<code>scoped</code>属性即可，这个属性是css只在此页面生效。</p>
+<h2 id="10-vue引入公共的js函数"><a href="#10-vue引入公共的js函数" class="headerlink" title="10.vue引入公共的js函数"></a>10.vue引入公共的js函数</h2><p>场景：后台系统多个子页面调用函数大同小异，想把公用代码整合成一个js文件然后在子页面调用就好。<br>解决办法：新建一个js文件 <code>export default {test(){}}</code> 然后在main.js中<code>Vue.prototype.publicFn = Init</code>,最后在子页面中<code>this.publicFn.test()</code>调用函数即可。</p>
+<blockquote>
+<p>2018.12.18更新</p>
+</blockquote>
+<h2 id="11-vue-请求两次接口"><a href="#11-vue-请求两次接口" class="headerlink" title="11.vue 请求两次接口"></a>11.vue 请求两次接口</h2><p>场景：在network中总能看到请求同一个接口两次，可第一次啥参数都没传，其中Request Method:Option<br>解决办法：在main.js中加上 <code>Vue.http.options.emulateHTTP = true; Vue.http.options.emulateJSON = true;</code>这两句，就ok啦</p>
+<h2 id="不定期更新，敬请期待"><a href="#不定期更新，敬请期待" class="headerlink" title="不定期更新，敬请期待"></a>不定期更新，敬请期待</h2>
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><blockquote>
+<p>以下内容是一些实际项目中遇到的很小的点，但却有很大帮助的代码。</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/07/30/填坑备忘录/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/填坑备忘录/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-gearhost免费部署node" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/12/gearhost免费部署node/">gearhost免费部署node</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/12/gearhost免费部署node/" class="archive-article-date">
+  	<time datetime="2018-07-12T02:27:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
+</a>
+        
+      </header>
+    
+    <!-- <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>gearhost简介:gearhost是美国的一家主机服务商，提供.NET/PHP/Node.js云主机。免费注册即可0元每月部署100个云站点及数据库。提供mysql/SQLServer/Mongo DB数据库，免费套餐的容量是100MB，月流量1GB。</p>
+</blockquote>
+<p>注册地址：<a href="https://www.gearhost.com" target="_blank">gearhost传送门</a></p>
+<p>注册、登录我这里就不做详细的教程了。</p>
+<p>登录进入之后，如下图所示：<br><img src="/2018/07/12/gearhost免费部署node/pic1.png" width="50%"></p>
+<p>然后选择代码上传方式,个人推荐本地git.如下图：<br><img src="/2018/07/12/gearhost免费部署node/pic2.png" width="50%"></p>
+<p>接下来的操作就是git的操作了，这里我也不做详细的说明了。</p>
+<p>给大家看下我node的文件列表。如下图：<br><img src="/2018/07/12/gearhost免费部署node/pic3.png" width="50%"></p>
+<p>部署完之后，如下图：<br><img src="/2018/07/12/gearhost免费部署node/pic4.png" width="50%"></p>
+<p>就可以看到node页面了。最后一张图：<br><img src="/2018/07/12/gearhost免费部署node/pic5.png" width="50%"></p>
+<p>好，O xx K 大功告成！</p>
+
+      
+
+      
+    </div> -->
+    
+    <!-- 自动截取摘要 -->
+    <div class="article-entry" itemprop="articleBody">
+    
+    
+        
+            
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                <p><blockquote>
+<p>gearhost简介:gearhost是美国的一家主机服务商，提供.NET/PHP/Node.js云主机。免费注册即可0元每月部署100个云站点及数据库。提供mysql/SQLServer/Mongo DB数据库，免费套餐的容量是100MB，月流量1GB。</p>
+<p>
+            
+        
+    
+    
+        </div>   
+        <!-- <div class="article-more-link">
+            <a href="/2018/07/12/gearhost免费部署node/#more">article.more</a>
+        </div> -->
+    
+
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">www</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/后端//" class="article-tag-list-link color3">后端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/12/gearhost免费部署node/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cookie带状态返回" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1028,361 +1432,6 @@
 
 
   
-    <article id="post-《shoe-dog》-初读鞋狗" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/19/《shoe-dog》-初读鞋狗/">《shoe dog》 - 初读鞋狗</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/19/《shoe-dog》-初读鞋狗/" class="archive-article-date">
-  	<time datetime="2018-04-19T01:20:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-19</time>
-</a>
-        
-      </header>
-    
-    <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/2018/04/19/《shoe-dog》-初读鞋狗/page1.jpg" width="30%"></p>
-<h2 id="原文经典语录"><a href="#原文经典语录" class="headerlink" title="原文经典语录"></a>原文经典语录</h2><p>1.”敢于冒险，别让你的才能掩埋在这片平庸的土地上。” &nbsp; &nbsp; &nbsp;–2014年6月 斯坦福大学 &nbsp;-菲尔.奈特。</p>
-<p>2.雅典娜胜利神庙（Temple of Athena Nike） &nbsp; –这也就是Nike名字的由来，象征着胜利。</p>
-<p>3.”在驱车返回的路上，我都在思考自己的销售大获成功的原因。我认为我之所以没法销售百科全书，是因为自己打心底里瞧不起它。销售共同基金时表现也只是稍有改进，因为我没有投入热情。那为什么卖鞋会如此不同呢？那是因为我发现这不是在销售，而是我对跑步的信赖。” &nbsp; - p60</p>
-<p>4.”作为会计师的我依旧能看出风险的存在，而作为创业者的我却也见到了可能性。所以我折中了一下，继续前行。” &nbsp;- p82</p>
-<p>5.”我走的路正是我觉得像是我的路，我不确定这条路会通往何方，但是我已经准备好找出属于我的终点。” - p130</p>
-<p>6.”生活就是成长，不成长就是死亡。”</p>
-<p>7.” ‘这个似乎是翅膀。’一个人说。&lsquo;像是 嗖的一声在空中留下的痕迹。&rsquo;另一个人说。也像某个跑者飞速留下的踪影。我们都觉得这个标志新颖、创意十足，多少又透露出一股子古老的气息。它具有永不过时的气质。”</p>
-<h2 id="思考-amp-amp-总结"><a href="#思考-amp-amp-总结" class="headerlink" title="思考&amp;&amp;总结"></a>思考&amp;&amp;总结</h2><p>未完待续…</p>
-
-      
-
-      
-    </div> -->
-    
-    <!-- 自动截取摘要 -->
-    <div class="article-entry" itemprop="articleBody">
-    
-    
-        
-            
-            
-                
-                
-            
-                
-                
-            
-            
-                
-                <p><p><img src="/2018/04/19/《shoe-dog》-初读鞋狗/page1.jpg" width="30%"></p>
-<h2 id="原文经典语录"><a href="#原文经典语录" class="headerlink" title="原文经典语录"></a>原文经典语录</h2><p>1.”敢于冒险，别让你的才能掩埋在这片平庸的土地上。” &nbsp; &nbsp; &nbsp;–2014年6月 斯坦福大学 &nbsp;-菲尔.奈特。</p>
-<p>
-            
-        
-    
-    
-        </div>   
-        <!-- <div class="article-more-link">
-            <a href="/2018/04/19/《shoe-dog》-初读鞋狗/#more">article.more</a>
-        </div> -->
-    
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">阅读</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/19/《shoe-dog》-初读鞋狗/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jquery-delegate的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/13/jquery-delegate的使用/">jquery - (delegate的使用)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/13/jquery-delegate的使用/" class="archive-article-date">
-  	<time datetime="2018-04-13T08:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-13</time>
-</a>
-        
-      </header>
-    
-    <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>起因：</strong>以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。<br><img src="/2018/04/13/jquery-delegate的使用/page2.jpg" width="30%"></p>
-<p><strong>所以：</strong>这就是为什么要用delegate绑定事件。</p>
-<p>举个例子：我在class为demo的标签内的a 标签加了个点击事件，而点击事件里面执行的是把demo标签内，所有内容替换，同时也会重新插入a标签。</p>
-<p><strong>example：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;.app_infro_con&quot;).delegate(&quot;a&quot;,&quot;click&quot;,function() &#123;</span><br><span class="line">	//给class名为app_infro_con内的a 标签一个点击事件</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        type:&quot;get&quot;,</span><br><span class="line">        url: Url,</span><br><span class="line">        dataType:&quot;jsonp&quot;,</span><br><span class="line">        async: true,</span><br><span class="line">        beforeSend:function(XMLHttpRequest)&#123; </span><br><span class="line">            $(&quot;.app_infro_con&quot;).html(&quot;img style=&apos;width: 100%;&apos; src=&apos;./images/loading.gif&apos;&quot;/);// app_infro_con内的内容，这时app_infro_con里面已经没有a标签了</span><br><span class="line">        &#125;, </span><br><span class="line">        success:function(res)&#123;</span><br><span class="line">            var infro = res.data.notice</span><br><span class="line">            $(&quot;.app_infro_con&quot;).html(infro);  // 这里的infro 是我外部定义的一个内容，里面是有a标签的，但是 如果用直接click去绑定，你会发现click只会触发一次,这是因为这里的a标签是新插入进来的。</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>嗯，终于从坑里出来了。可怕~</p>
-
-      
-
-      
-    </div> -->
-    
-    <!-- 自动截取摘要 -->
-    <div class="article-entry" itemprop="articleBody">
-    
-    
-        
-            
-            
-                
-                
-            
-                
-                
-            
-            
-                
-                <p><p><strong>起因：</strong>以前jq绑定点击事件，是不是都是$(“xxxx”).click(function(){})。嗯，人都是这样，不碰到坑，是不知悔改的。<br><img src="/2018/04/13/jquery-delegate的使用/page2.jpg" width="30%"></p>
-<p><strong>所以：</strong>这就是为什么要用delegate绑定事件。</p>
-<p>
-            
-        
-    
-    
-        </div>   
-        <!-- <div class="article-more-link">
-            <a href="/2018/04/13/jquery-delegate的使用/#more">article.more</a>
-        </div> -->
-    
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/13/jquery-delegate的使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js-ajax-loading加载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/13/js-ajax-loading加载/">js - (ajax loading加载)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/04/13/js-ajax-loading加载/" class="archive-article-date">
-  	<time datetime="2018-04-13T08:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-13</time>
-</a>
-        
-      </header>
-    
-    <!-- <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>先上效果图</strong>：<br><img src="/2018/04/13/js-ajax-loading加载/page3.gif" width="30%"><br>在上代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">   type:&quot;get&quot;,</span><br><span class="line">   url: Url,</span><br><span class="line">   dataType:&quot;jsonp&quot;,</span><br><span class="line">   async: true,</span><br><span class="line">   // 此方法就是加载完成前的动画方法</span><br><span class="line">   beforeSend:function(XMLHttpRequest)&#123; </span><br><span class="line">   　　$(&quot;.app_infro_con&quot;).html(&quot;img src=&apos;./images/loading.gif&apos;/&quot;);</span><br><span class="line">   &#125;, </span><br><span class="line">   success:function(res)&#123;</span><br><span class="line">   　　var infro = res.data.notice</span><br><span class="line">   　　$(&quot;.app_infro_con&quot;).html(infro);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>嗯，ok ,人狠话不多。</p>
-
-      
-
-      
-    </div> -->
-    
-    <!-- 自动截取摘要 -->
-    <div class="article-entry" itemprop="articleBody">
-    
-    
-        
-            
-            
-                
-                
-            
-                
-                
-            
-            
-                
-                <p><p><strong>先上效果图</strong>：<br><img src="/2018/04/13/js-ajax-loading加载/page3.gif" width="30%"><br>在上代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">   type:&quot;get&quot;,</span><br><span class="line">   url: Url,</span><br><span class="line">   dataType:&quot;jsonp&quot;,</span><br><span class="line">   async: true,</span><br><span class="line">   // 此方法就是加载完成前的动画方法</span><br><span class="line">   beforeSend:function(XMLHttpRequest)&#123; </span><br><span class="line">   　　$(&quot;.app_infro_con&quot;).html(&quot;img src=&apos;./images/loading.gif&apos;/&quot;);</span><br><span class="line">   &#125;, </span><br><span class="line">   success:function(res)&#123;</span><br><span class="line">   　　var infro = res.data.notice</span><br><span class="line">   　　$(&quot;.app_infro_con&quot;).html(infro);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>嗯，ok ,人狠话不多。</p>
-<p>
-            
-        
-    
-    
-        </div>   
-        <!-- <div class="article-more-link">
-            <a href="/2018/04/13/js-ajax-loading加载/#more">article.more</a>
-        </div> -->
-    
-
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jquery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/04/13/js-ajax-loading加载/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1483,19 +1532,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">jq</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1528,6 +1577,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">诗</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">学习</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1579,11 +1632,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="https://desktop.lafitewu.site/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>桌面个人网站</a>
+              <a href="http://www.17sucai.com/preview/703246/2018-01-22/lafitewu.rar/index.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>桌面个人网站</a>
             </li>
           
             <li class="search-li">
-              <a href="http://3dhouse.lafitewu.site/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>3D九宫格</a>
+              <a href="http://www.17sucai.com/preview/703246/2018-01-09/demo11/index.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>3D九宫格</a>
             </li>
           
             <li class="search-li">
@@ -1600,6 +1653,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="http://lafitewu.gearhostpreview.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>英文特效官网</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://www.17sucai.com/preview/703246/2019-05-31/layuiAdminRed/index.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>layui管理后台</a>
             </li>
           
         </ul>
